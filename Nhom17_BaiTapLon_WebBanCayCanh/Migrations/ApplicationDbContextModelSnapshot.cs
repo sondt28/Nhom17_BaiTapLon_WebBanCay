@@ -211,7 +211,12 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ParentCategoryId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ParentCategoryId");
 
                     b.ToTable("Categories");
                 });
@@ -321,15 +326,12 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -520,6 +522,17 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Nhom17_BaiTapLon_WebBanCayCanh.Models.Category", b =>
+                {
+                    b.HasOne("Nhom17_BaiTapLon_WebBanCayCanh.Models.Category", "ParentCategory")
+                        .WithMany()
+                        .HasForeignKey("ParentCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ParentCategory");
                 });
 
             modelBuilder.Entity("Nhom17_BaiTapLon_WebBanCayCanh.Models.Order", b =>
