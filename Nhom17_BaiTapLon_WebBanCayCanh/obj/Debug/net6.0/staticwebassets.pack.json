@@ -13,6 +13,22 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\images\\0c47d327-efdd-45ae-9eeb-b9051cca68e7_950b58d65c0c3e02de04d1fe42eea6ef.jpg",
+      "PackagePath": "staticwebassets\\images\\0c47d327-efdd-45ae-9eeb-b9051cca68e7_950b58d65c0c3e02de04d1fe42eea6ef.jpg"
+    },
+    {
+      "Id": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\images\\e626af3f-ded2-455b-9094-fa73b9a7e301_950b58d65c0c3e02de04d1fe42eea6ef.jpg",
+      "PackagePath": "staticwebassets\\images\\e626af3f-ded2-455b-9094-fa73b9a7e301_950b58d65c0c3e02de04d1fe42eea6ef.jpg"
+    },
+    {
+      "Id": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\images\\f0ed8490-8b18-42cd-80a1-c33062e1f4c5_950b58d65c0c3e02de04d1fe42eea6ef.jpg",
+      "PackagePath": "staticwebassets\\images\\f0ed8490-8b18-42cd-80a1-c33062e1f4c5_950b58d65c0c3e02de04d1fe42eea6ef.jpg"
+    },
+    {
+      "Id": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\js\\product.js",
+      "PackagePath": "staticwebassets\\js\\product.js"
+    },
+    {
       "Id": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
