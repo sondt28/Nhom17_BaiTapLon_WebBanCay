@@ -1,6 +1,7 @@
 ﻿<h1>Tất cả sản phẩm</h1>
-<a asp-controller="Products" asp-action="Create">Tạo sản phẩm</a>
-
+<button type="button" class="btn btn-primary" id="btnCreateProduct">
+  Tạo sản phẩm
+</button>
 <table class="table">
     <thead>
         <th>STT</th>
@@ -11,11 +12,136 @@
         <th>Mô tả</th>
         <th></th>
     </thead>
-    <tbody>
+    <tbody id="productTable">
 
     </tbody>
 </table>
 
-<script src="~/lib/jquery/dist/jquery.js"></script>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/js/product.js"></script>
+@*CREATE*@
+
+<div class="madal fade modal" id="ProductModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>Create Product</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    <label>Tên</label>
+                    <div>
+                        <input type="text" id="nameProduct"/>
+                    </div>
+                    <label>Mô tả</label>
+                    <div>
+                        <textarea id="descriptionProduct"></textarea>
+                    </div>
+                    <div>
+                        <label>Khả dụng</label>
+                        <input type="checkbox" id="availabilityProduct"/>
+                    </div>
+                    <label>Ảnh</label>
+                    <div>
+                        <input type="file" accept=".png, .jpg, .jpeg" id="imageProduct"/>
+                    </div>
+                    <label for="createCategories">Chọn danh mục:</label>
+                    <select name="createCategories" id="createCategoriesSelection">
+                      
+                    </select>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" onclick="CreateProduct()" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*UPDATE*@
+
+<div class="madal fade modal" id="UpdateProductModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>Update Product</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    <input type="hidden" id="id" />
+                    <label>Tên</label>
+                    <div>
+                        <input type="text" id="updateNameProduct"/>
+                    </div>
+                    <label>Mô tả</label>
+                    <div>
+                        <textarea id="updateDescriptionProduct"></textarea>
+                    </div>
+                    <div>
+                        <label for="availability">Khả dụng</label>
+                        <input type="checkbox" name="availability" id="updateAvailabilityProduct"/>
+                    </div>
+                    <label>Ảnh</label>
+                    <div>
+                        <input type="file" accept=".png, .jpg, .jpeg" id="updateImageProduct"/>
+                    </div>
+                    <label for="categories">Chọn danh mục:</label>
+                    <select name="categories" id="updateCategoriesSelection">
+                      
+                    </select>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" onclick="UpdateProduct()" class="btn btn-primary">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*DELETE*@
+
+<div class="madal fade modal" id="DeleteProductModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>Delete Product</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" id="Id" name="Id" />
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" onclick="DeleteProduct()" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*DETAILS*@
+
+<div class="modal fade" id="DetailsProductModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>Product Details</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                 <h5>- Sản phẩm</h5>
+                 <div id="product">
+                        
+                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/modal/product_modal.js"></script>
+}
