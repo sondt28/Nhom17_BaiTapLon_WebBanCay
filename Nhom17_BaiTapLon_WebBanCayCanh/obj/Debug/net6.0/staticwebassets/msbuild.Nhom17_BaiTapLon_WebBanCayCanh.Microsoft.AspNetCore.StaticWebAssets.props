@@ -368,6 +368,54 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\accee256-fc3c-4205-88d8-c1ada0809503_950b58d65c0c3e02de04d1fe42eea6ef.jpg))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\ae16b048-392f-4669-91d3-e2bdbd1822b4_c7539dbfe3e53cbb65f4.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>Nhom17_BaiTapLon_WebBanCayCanh</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Nhom17_BaiTapLon_WebBanCayCanh</BasePath>
+      <RelativePath>images/ae16b048-392f-4669-91d3-e2bdbd1822b4_c7539dbfe3e53cbb65f4.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\ae16b048-392f-4669-91d3-e2bdbd1822b4_c7539dbfe3e53cbb65f4.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\b0087d7b-5877-4761-9c3c-184c4aeeb3ce_c7539dbfe3e53cbb65f4.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>Nhom17_BaiTapLon_WebBanCayCanh</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Nhom17_BaiTapLon_WebBanCayCanh</BasePath>
+      <RelativePath>images/b0087d7b-5877-4761-9c3c-184c4aeeb3ce_c7539dbfe3e53cbb65f4.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\b0087d7b-5877-4761-9c3c-184c4aeeb3ce_c7539dbfe3e53cbb65f4.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\b133863a-bd87-44fa-a550-7e877009fd30_63159ac1f5dc8e261cb726c873151197 (1).jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>Nhom17_BaiTapLon_WebBanCayCanh</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Nhom17_BaiTapLon_WebBanCayCanh</BasePath>
+      <RelativePath>images/b133863a-bd87-44fa-a550-7e877009fd30_63159ac1f5dc8e261cb726c873151197 (1).jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\b133863a-bd87-44fa-a550-7e877009fd30_63159ac1f5dc8e261cb726c873151197 (1).jpg))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\b2bd9d17-afe5-4aa7-9320-82c193c1c246_950b58d65c0c3e02de04d1fe42eea6ef.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>Nhom17_BaiTapLon_WebBanCayCanh</SourceId>

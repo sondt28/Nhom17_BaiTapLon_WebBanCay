@@ -11,6 +11,7 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Data
 
         }
         public DbSet<User> Users { get; set; }
+        public DbSet<Nhom17_BaiTapLon_WebBanCayCanh.Models.ProductOption>? ProductOption { get; set; }
         //public DbSet<Address> Addresses { get; set; }
         //public DbSet<Category> Categories { get; set; }
         //public DbSet<Product> Products { get; set; }

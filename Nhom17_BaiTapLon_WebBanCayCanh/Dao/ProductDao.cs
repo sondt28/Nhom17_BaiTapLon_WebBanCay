@@ -37,7 +37,7 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Dao
                 cmd.ExecuteNonQuery();
             }
         }
-        public static List<Product> GetProducts(IConfiguration configuration)
+        public static ProductViewModel GetProducts(IConfiguration configuration)
         {
             DataTable dataTable = new DataTable();
             using (SqlConnection sqlConnection = new SqlConnection(configuration.GetConnectionString("DefaultConnection")))
@@ -48,8 +48,9 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Dao
                 adapter.Fill(dataTable);
             }
             List<Product> products = ConvertDataTableToProducts(dataTable);
-        
-            return products;
+            ProductViewModel model = new ProductViewModel();
+            model.Products = products;
+            return model;
         }
         public static Product GetProduct(IConfiguration configuration, int id)
         {
@@ -106,6 +107,7 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Dao
                 }
 
                 product.Category = category;
+                product.CategoryId = category.Id;
                 products.Add(product);
             }
             return products;

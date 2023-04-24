@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Nhom17_BaiTapLon_WebBanCayCanh.Dao;
 using Nhom17_BaiTapLon_WebBanCayCanh.Models;
-using Nhom17_BaiTapLon_WebBanCayCanh.ViewModel;
 using Nhom17_BaiTapLon_WebBanCayCanh.ViewModels;
+using System.Data;
 
 namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
 {
@@ -18,21 +19,22 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            ProductViewModel products = ProductDao.GetProducts(_configuration);
+            return View(products);
         }
         public JsonResult Create()
         {
             List<Category> categories = CategoryDao.GetCategoiesSelection(_configuration);
-            return new JsonResult(categories);
-        }
-        public JsonResult GetProducts()
-        {
-            List<Product> products = ProductDao.GetProducts(_configuration);
-
-            return new JsonResult(products);
+            ProductViewModel model = new ProductViewModel();
+            model.CategoryList = categories.Select(u => new SelectListItem
+            {
+                Text = u.Name,
+                Value = u.Id.ToString()
+            }).ToList();
+            return new JsonResult(model);
         }
         [HttpPost]
-        public JsonResult Create(ProductViewModel product)
+        public IActionResult Create(ProductViewModel product)
         {
             string image = UploadFile(product);
             
@@ -46,23 +48,51 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
             };
             ProductDao.CreateProduct(_configuration, model);
 
-            return new JsonResult("success");
+            return RedirectToAction("Index", "Products");
         }
-        public JsonResult Update(int id)
+        public IActionResult Update(int id)
         {
             Product product = ProductDao.GetProduct(_configuration, id);
             List<Category> categories = CategoryDao.GetCategoiesSelection(_configuration);
-            
-            ProductWithCategories productWithCategories = new ProductWithCategories
+
+            ProductViewModel model = new ProductViewModel()
             {
-                Product = product,
-                Categories = categories
+                Id = product.Id,
+                Name = product.Name,
+                Description = product.Description,
+                Availability = product.Availability,
+                Image = product.Image,
+                CategoryId = product.Category.Id,
+                CategoryList = categories.Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                }).ToList()
             };
 
-            return new JsonResult(productWithCategories);
+            return new JsonResult(model);
         }
+        public IActionResult Details(int id)
+        {
+            Product product = ProductDao.GetProduct(_configuration, id);
+            
+            ProductViewModel model = new ProductViewModel()
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Description = product.Description,
+                Availability = product.Availability,
+                CategoryId = product.Category.Id,
+                CategoryName = product.Category.Name,
+                Image = product.Image
+            };
+
+            return new JsonResult(model);
+        }
+
+
         [HttpPost]
-        public JsonResult Update(ProductViewModel product)
+        public IActionResult Update(ProductViewModel product)
         {
             Product oldProduct = ProductDao.GetProduct(_configuration, product.Id);
             
@@ -86,14 +116,9 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
             };
             ProductDao.UpdateProduct(_configuration, model);
 
-            return new JsonResult(model);
+            return RedirectToAction("Index", "Products");
         }
-        public JsonResult Details(int id)
-        {
-            Product product = ProductDao.GetProductWithCategoryAndOptions(_configuration, id);
 
-            return new JsonResult(product);
-        }
         private string UploadFile(ProductViewModel product)
         {
             string uniqueFileName = null;

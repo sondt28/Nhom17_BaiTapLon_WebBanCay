@@ -1,23 +1,23 @@
-﻿@model ProductViewModel
+﻿@model CategoryViewModel
 
-<h1>Danh sách sản phẩm</h1>
-<button id="ProductModalClick" class="btn btn-primary">Tạo sản phẩm</button>
+<h1>Danh sách danh mục</h1>
+<button id="CategoryModalClick" class="btn btn-primary">Tạo danh mục</button>
 <table class="table">
     <thead>
         <tr>
             <th>STT</th>
             <th>Id</th>
             <th>Tên</th>
-            <th>Danh mục</th>
+            <th>Danh mục cha</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
          
-        @if (Model.Products != null)
+        @if (Model.Categories != null)
         {
             int counter = 1;
-            @foreach(var item in Model.Products)
+            @foreach(var item in Model.Categories)
             {
                 <tr>
                     <td>
@@ -30,19 +30,19 @@
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
-                        @if(item.CategoryId == 0)
+                        @if (item.ParentCategory.Id == 0)
                         {
                             <span>None</span>
-                        } 
+                        }
                         else
                         {
-                            @Html.DisplayFor(modelItem => item.Category.Id)
+                            @Html.DisplayFor(modelItem => item.ParentCategory.Id)
                             @Html.Raw(" - ")
-                            @Html.DisplayFor(modelItem => item.Category.Name)
+                            @Html.DisplayFor(modelItem => item.ParentCategory.Name)
                         }
                     </td>
                     <td>
-                        <button onclick="Details('@item.Id')" class="btn btn-info">Chi tiết</button>
+                        <button onclick="Details(@item.Id)" class="btn btn-info">Chi tiết</button>
                         <button onclick="Edit(@item.Id)" class="btn btn-warning">Sửa</button>
                     </td>
                 </tr>
@@ -54,35 +54,23 @@
 
 @*CREATE*@
 
-<div class="madal fade modal" id="ProductModal">
+<div class="madal fade modal" id="CategoryModal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1>Tạo sản phẩm</h1>
+                <h1>Tạo danh mục</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form enctype="multipart/form-data" asp-action="Create" asp-controller="Products" method="post" data-ajax="true" data-ajax-success="onCreateSuccess">
+            <form asp-action="Create" asp-controller="Categories" method="post" data-ajax="true">
                 <div class="modal-body">
                     <div asp-validation-summary="All" class="text-danger"></div>
                     <label asp-for="Name"></label>
                     <div>
                         <input asp-for="Name" />
                     </div>
-                    <label asp-for="ProfileImage"></label>
-                    <div>
-                        <input asp-for="ProfileImage" accept="image/*"/>
-                    </div>
-                    <label asp-for="Description"></label>
-                    <div>
-                        <textarea asp-for="Description"></textarea>
-                    </div>
-                    <div>
-                        <label asp-for="Availability"></label>
-                        <input asp-for="Availability" />
-                    </div>
+                    <label asp-for="ParentCategoryId"></label>
                     <div class="mt-2">
-                        <label asp-for="CategoryId"></label>
-                        <select asp-for="CategoryId" asp-items="@Model.CategoryList" class="categorySelect" data-val="false">
+                        <select asp-for="ParentCategoryId" asp-items="@Model.ParentCategoryList" class="parentCategorySelect" data-val="false">
                             
                         </select>
                     </div>
@@ -100,36 +88,24 @@
 
 @*UPDATE*@
 
-<div class="madal fade modal" id="UpdateProductModal">
+<div class="madal fade modal" id="UpdateCategoryModal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1>Cập nhật sản phẩm</h1>
+                <h1>Cập nhật danh mục</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form enctype="multipart/form-data" asp-action="Update" asp-controller="Products" method="post" data-ajax="true" data-ajax-success="onCreateSuccess">
                 <div class="modal-body">
-                    <input type="hidden" asp-for="Id" class="productId"/>
+                    <input type="hidden" asp-for="Id" class="categoryId"/>
                     <div asp-validation-summary="All" class="text-danger"></div>
                     <label asp-for="Name"></label>
                     <div>
                         <input class="nameProduct" asp-for="Name" />
                     </div>
-                    <label class="nameProduct" asp-for="ProfileImage"></label>
-                    <div>
-                        <input type="file" name="ProfileImage" accept="image/*" />
-                    </div>
-                    <label asp-for="Description"></label>
-                    <div>
-                        <textarea class="descriptionProduct" asp-for="Description"></textarea>
-                    </div>
-                    <div>
-                        <label asp-for="Availability"></label>
-                        <input type="checkbox" class="availabilityProduct" asp-for="Availability" />
-                    </div>
+                    <label asp-for="ParentCategoryId"></label>
                     <div class="mt-2">
-                        <label asp-for="CategoryId"></label>
-                        <select asp-for="CategoryId" asp-items="@Model.CategoryList" class="categorySelect" data-val="false">
+                        <select asp-for="ParentCategoryId" asp-items="@Model.ParentCategoryList" class="parentCategorySelect" data-val="false">
                             
                         </select>
                     </div>
@@ -171,21 +147,21 @@
     }
 
     <script>
-        $("#ProductModalClick").click(function () {
+        $("#CategoryModalClick").click(function () {
             
             $.ajax({
-                url: 'Products/Create',
+                url: 'Categories/Create',
                 type: 'GET',
                 contentType: 'application/json;character=utf-8',
                 dataType: 'json',
                 success: function (data) {
-                    $("#ProductModal").modal('show');
+                    $("#CategoryModal").modal('show');
                     var obj = '';
                     obj += `<option disabled selected>--Chọn danh mục--</option>`;
-                    $.each(data.categoryList, function (index, item) {
+                    $.each(data.parentCategoryList, function (index, item) {
                         obj += `<option value="${item.value}">` + item.text + `</option>`;
                     });
-                    $(".categorySelect").html(obj);
+                    $(".parentCategorySelect").html(obj);
                     console.log(data);
                 },
                 error: function () {
@@ -201,11 +177,7 @@
                 contentType: 'application/json;character=utf-8',
                 dataType: 'json',
                 success: function (data) {
-                    $("#UpdateProductModal").modal('show');
-                    $(".productId").val(data.id);
-                    $(".nameProduct").val(data.name);
-                    $(".descriptionProduct").val(data.description);
-                    $(".availabilityProduct").prop("checked", data.availability);
+                    $("#UpdateCategoryModal").modal('show');
                     
                     if (data.categoryId == 0) {
                         var obj = '';
@@ -217,7 +189,6 @@
 
                     } else {
                         var option = '';
-                        option += `<option>--Chọn danh mục--</option>`;
                         $.each(data.categoryList, function (index, item) {
                             
                             if (item.value != data.categoryId) {
@@ -229,6 +200,7 @@
                          $(".categorySelect").html(option);
                     }
 
+                    
                     console.log(data);
                 },
                 error: function () {
@@ -237,55 +209,53 @@
             })
         }
 
-        function Details(id) {
-            $.ajax({
-                url: 'Products/Details?id=' + id,
-                type: 'GET',
-                contentType: 'application/json;character=utf-8',
-                dataType: 'json',
-                success: function (data) {
-                    $("#DetailsProductModal").modal('show');
-                    var obj = '';
-                    obj += `<dt class = "col-sm-2">
-                                Tên
-                            </dt>
-                            <dd class = "col-sm-10">
-                                ${data.name}
-                            </dd>
-                            <dt class = "col-sm-2">
-                                Ảnh
-                            </dt>
-                            <dd class = "col-sm-10">
-                                <img src="./images/${data.image}" alt="Product image" width="100" height="100">
-                            </dd>
-                            <dt class = "col-sm-2">
-                                Khả dụng
-                            </dt>
-                            <dd class = "col-sm-10">
-                                ${data.availability}
-                            </dd>
-                            <dt class = "col-sm-2">
-                                Danh mục
-                            </dt>
-                            <dd class = "col-sm-10">
-                                ${data.categoryName}
-                            </dd>
-                            <dt class = "col-sm-2">
-                                Mô tả
-                            </dt>
-                            <dd class = "col-sm-10">
-                                ${data.description}
-                            </dd>
-                        </dl>
-                    `
-                    $("#productDetail").html(obj);                
-                },
-                error: function () {
+        //function Details(id) {
+        //    $.ajax({
+        //        url: 'Products/Details?id=' + id,
+        //        type: 'GET',
+        //        contentType: 'application/json;character=utf-8',
+        //        dataType: 'json',
+        //        success: function (data) {
+        //            $("#DetailsProductModal").modal('show');
+        //            var obj = '';
+        //            obj += `<dt class = "col-sm-2">
+        //                        Tên
+        //                    </dt>
+        //                    <dd class = "col-sm-10">
+        //                        ${data.name}
+        //                    </dd>
+        //                    <dt class = "col-sm-2">
+        //                        Ảnh
+        //                    </dt>
+        //                    <dd class = "col-sm-10">
+        //                        <img src="./images/${data.image}" alt="Product image" width="100" height="100">
+        //                    </dd>
+        //                    <dt class = "col-sm-2">
+        //                        Khả dụng
+        //                    </dt>
+        //                    <dd class = "col-sm-10">
+        //                        ${data.availability}
+        //                    </dd>
+        //                    <dt class = "col-sm-2">
+        //                        Danh mục
+        //                    </dt>
+        //                    <dd class = "col-sm-10">
+        //                        ${data.categoryName}
+        //                    </dd>
+        //                    <dt class = "col-sm-2">
+        //                        Mô tả
+        //                    </dt>
+        //                    <dd class = "col-sm-10">
+        //                        ${data.description}
+        //                    </dd>
+        //                </dl>
+        //            `
+        //            $("#productDetail").html(obj);                
+        //        },
+        //        error: function () {
                     
-                }
-            })
-        }
-
-
+        //        }
+        //    })
+        //}
     </script>
 }
