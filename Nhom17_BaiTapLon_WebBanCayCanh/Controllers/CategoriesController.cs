@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Nhom17_BaiTapLon_WebBanCayCanh.Dao;
 using Nhom17_BaiTapLon_WebBanCayCanh.Models;
@@ -42,6 +43,68 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
             CategoryDao.CreateCategory(_configuration, category);
 
             return RedirectToAction("Index", "Categories");
+        }
+        public IActionResult Update(int id)
+        {
+            Category category = CategoryDao.GetCategory(_configuration, id);
+            List<Category> categories = CategoryDao.GetCategoriesWithoutProductAndOwnCategory(_configuration, id);
+            CategoryViewModel model = new CategoryViewModel()
+            {
+                Id = category.Id,
+                Name = category.Name,
+                ParentCategoryId = category.ParentCategory.Id,
+                ParentCategory = category.ParentCategory,
+                ParentCategoryList = categories.Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                }).ToList()
+            };
+
+            return new JsonResult(model);
+        }
+        [HttpPost]
+        public IActionResult Update(CategoryViewModel model)
+        {
+            Category category = new Category()
+            {
+                Id = model.Id,
+                Name = model.Name,
+                ParentCategoryId = model.ParentCategoryId
+            };
+            CategoryDao.UpdateCategory(_configuration, category);
+
+            return RedirectToAction("Index", "Categories");
+        }
+        public IActionResult Delete(int id)
+        {
+            Category category = CategoryDao.GetCategory(_configuration, id);
+            CategoryViewModel model = new CategoryViewModel()
+            {
+                Id = category.Id,
+                Name = category.Name
+            };
+            return new JsonResult(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Delete(CategoryViewModel model)
+        {
+            
+            CategoryDao.DeleteCategory(_configuration, model.Id);
+
+            return RedirectToAction("Index", "Categories");
+        }
+        public IActionResult Details(int id)
+        {
+            Category category = CategoryDao.GetCategory(_configuration, id);
+            CategoryViewModel model = new CategoryViewModel()
+            {
+                Id = category.Id,
+                Name = category.Name,
+                ParentCategoryId = category.ParentCategory.Id,
+                ParentCategory = category.ParentCategory
+            };
+            return new JsonResult(model);
         }
     }
 }
