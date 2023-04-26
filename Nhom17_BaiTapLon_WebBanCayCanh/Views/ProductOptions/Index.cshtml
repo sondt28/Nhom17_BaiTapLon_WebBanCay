@@ -1,0 +1,334 @@
+﻿@model ProductOptionViewModel
+
+<h1>Danh sách biến thể sản phẩm</h1>
+<button id="ProductOptionModalClick" class="btn btn-primary">Tạo biến thể</button>
+<table class="table">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>ID</th>
+            <th>Biến thể</th>
+            <th>ID Sản phẩm</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+         
+        @if (Model.ProductOptions != null)
+        {
+            int counter = 1;
+            @foreach(var item in Model.ProductOptions)
+            {
+                <tr>
+                    <td>
+                        @counter
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Value)
+                    </td>
+                    <td>
+                        @if(item.ProductId == 0)
+                        {
+                            <span>None</span>
+                        } 
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => item.Product.Id)
+                        }
+                    </td>
+                    <td>
+                        <button onclick="Details('@item.Id')" class="btn btn-success">Chi tiết</button>
+                        <button onclick="Edit(@item.Id)" class="btn btn-primary">Sửa</button>
+                        <button onclick="Delete(@item.Id)" class="btn btn-danger">Xóa</button>
+                    </td>
+                </tr>
+                counter++;
+            }
+        }
+    </tbody>
+</table>
+
+@*CREATE*@
+
+<div class="madal fade modal" id="ProductOptionModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>Tạo biến thể</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form enctype="multipart/form-data" asp-action="Create" asp-controller="ProductOptions" method="post" data-ajax="true" data-ajax-success="onCreateSuccess">
+                <div class="modal-body">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    
+                    <label asp-for="Value"></label>
+                    <div>
+                        <input asp-for="Value" />
+                    </div>
+                    <label asp-for="ProfileImage"></label>
+                    <div>
+                        <input asp-for="ProfileImage" accept="image/*"/>
+                    </div>
+                    <label asp-for="Price"></label>
+                    <div>
+                        <input asp-for="Price" />
+                    </div>
+                    <label asp-for="StockQuantity"></label>
+                    <div>
+                        <input asp-for="StockQuantity" />
+                    </div>
+                    <div class="mt-2">
+                        <label asp-for="ProductId"></label>
+                        <select asp-for="ProductId" asp-items="@Model.ProductList" class="productSelect">
+                            
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <div>
+                        <input type="submit" class="btn btn-primary" value="Tạo"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*UPDATE*@
+
+<div class="madal fade modal" id="UpdateProductOptionModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>Cập nhật sản phẩm</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form enctype="multipart/form-data" asp-action="Update" asp-controller="ProductOptions" method="post" data-ajax="true" data-ajax-success="onCreateSuccess">
+                <div class="modal-body">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    
+                    <input type="hidden" asp-for="Id" class="productOptionId"/>
+
+                    <label asp-for="Value"></label>
+                    <div>
+                        <input class="productOptionValue" asp-for="Value" />
+                    </div>
+                    <label asp-for="ProfileImage"></label>
+                    <div>
+                        <input type="file" name="ProfileImage" accept="image/*" />
+                    </div>
+                    <label asp-for="Price"></label>
+                    <div>
+                        <input class="productOptionPrice" asp-for="Price" />
+                    </div>
+                    <label asp-for="StockQuantity"></label>
+                    <div>
+                        <input class="productOptionStockQuantity" asp-for="StockQuantity" />
+                    </div>
+                    <div class="mt-2">
+                        <label asp-for="ProductId"></label>
+                        <select asp-for="ProductId" asp-items="@Model.ProductList" class="productSelect">
+                            
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <div>
+                        <input type="submit" class="btn btn-primary" value="Cập nhật"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*DETAIL*@
+
+<div class="modal fade" id="DetailsProductOptionModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>Product Details</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                 <div id="productOptionDetail">
+
+                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*DELETE*@
+
+<div class="madal fade modal" id="DeleteProductOptionModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>Delete Option</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form asp-action="Delete" asp-controller="Categories" method="post" data-ajax="true" data-ajax-success="onCreateSuccess">
+                <div class="modal-body">
+                    <h4>Are you sure do delete option "<span class="nameProductOption"></span>" ?</h4>
+                    <input class="productOptionId" asp-for="Id" type="hidden"/>
+                    <input class="nameProductOption" asp-for="Value" type="hidden"/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <div>
+                        <input type="submit" class="btn btn-danger" value="Delete"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        $("#ProductOptionModalClick").click(function () {
+            $.ajax({
+                url: 'ProductOptions/Create',
+                type: 'GET',
+                contentType: 'application/json;character=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    $("#ProductOptionModal").modal('show');
+                    var obj = '';
+                    obj += `<option disabled selected>--Chọn sản phẩm--</option>`;
+                    $.each(data.productList, function (index, item) {
+                        obj += `<option value="${item.value}">${item.value} - ${item.text} </option>`;
+                    });
+                    $(".productSelect").html(obj);
+                    console.log(data);
+                },
+                error: function () {
+                    
+                }
+            })
+        })
+
+        function Edit(id) {
+            $.ajax({
+                url: 'ProductOptions/Update?id=' + id,
+                type: 'GET',
+                contentType: 'application/json;character=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    $("#UpdateProductOptionModal").modal('show');
+                    $(".productOptionId").val(data.id);
+                    $(".productOptionValue").val(data.value);
+                    $(".productOptionStockQuantity").val(data.stockQuantity);
+                    
+                    if (data.productId == 0) {
+                        var obj = '';
+                        obj += `<option disabled selected>--Chọn sản phẩm--</option>`;
+                        $.each(data.productList, function (index, item) {
+                            obj += `<option value="${item.value}">${item.value} - ${item.text} </option>`;
+                        });
+                        $(".productSelect").html(obj);
+
+                    } else {
+                        var option = '';
+                        option += `<option>--Chọn sản phẩm--</option>`;
+                        $.each(data.productList, function (index, item) {
+                            
+                            if (item.value != data.productId) {
+                                option += `<option value="${item.value}">${item.value} - ${item.text} </option>`;
+                            } else {
+                                option += `<option selected value="${item.value}">${item.value} - ${item.text} </option>`;
+                            }
+                        });
+                        $(".productSelect").html(option);
+                    }
+
+                    console.log(data);
+                },
+                error: function () {
+                    
+                }
+            })
+        }
+
+        function Details(id) {
+            $.ajax({
+                url: 'ProductOptions/Details?id=' + id,
+                type: 'GET',
+                contentType: 'application/json;character=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    $("#DetailsProductOptionModal").modal('show');
+                    var obj = '';
+                    obj += `<dt class = "col-sm-2">
+                                Giá trị
+                            </dt>
+                            <dd class = "col-sm-10">
+                                ${data.value}
+                            </dd>
+                            <dt class = "col-sm-2">
+                                Ảnh
+                            </dt>
+                            <dd class = "col-sm-10">
+                                <img src="./images/${data.image}" alt="Product image" width="100" height="100">
+                            </dd>
+                            <dt class = "col-sm-2">
+                                Giá
+                            </dt>
+                            <dd class = "col-sm-10">
+                                ${data.price}
+                            </dd>
+                            <dt>
+                                Số lượng kho
+                            </dt>
+                            <dd class = "col-sm-10">
+                                ${data.stockQuantity}
+                            </dd>
+                            <dt >
+                                Thuộc sản phẩm
+                            </dt>
+                            <dd class = "col-sm-10">
+                                ${data.productId} - ${data.productName}
+                            </dd>
+                        </dl>
+                    `
+                    $("#productOptionDetail").html(obj);                
+                },
+                error: function () {
+                    
+                }
+            })
+        }
+
+        function Delete(id) {
+            $.ajax({
+                url: 'ProductOptions/Delete?id=' + id,
+                type: 'GET',
+                contentType: 'application/json;character=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    $("#DeleteProductOptionModal").modal('show');
+                    $(".nameProductOption").html(data.value);
+                    $(".nameProductOption").val(data.value)
+                    $(".productOptionId").val(data.id);
+                    console.log(data);
+                },
+                error: function () {
+                    
+                }
+            })
+        }
+    </script>
+}

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using Nhom17_BaiTapLon_WebBanCayCanh.Models;
+using System.Collections.Generic;
 using System.Data;
 
 namespace Nhom17_BaiTapLon_WebBanCayCanh.Dao
@@ -83,7 +84,20 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Dao
 
             return product;
         }
+        public static List<Product> GetProducstSelect(IConfiguration configuration)
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection sqlConnection = new SqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            {
+                sqlConnection.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter("sp_getProductSelects", sqlConnection);
+                adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                adapter.Fill(dataTable);
+            }
+            List<Product> products = ConvertDataTableToProductsSelect(dataTable);
 
+            return products;
+        }
         private static List<Product> ConvertDataTableToProducts(DataTable dataTable)
         {
             List<Product> products = new List<Product>();
@@ -112,6 +126,20 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Dao
             }
             return products;
         }
+        private static List<Product> ConvertDataTableToProductsSelect(DataTable dataTable)
+        {
+            List<Product> products = new List<Product>();
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                Product product = new Product();
+                product.Id = Convert.ToInt32(dataTable.Rows[i]["Id"]);
+                product.Name = Convert.ToString(dataTable.Rows[i]["Name"]);
+
+                products.Add(product);
+            }
+            return products;
+        }
+
         private static Product ConvertDataTableToProduct(DataTable dataTable)
         {
             Product product = new Product();
@@ -171,7 +199,7 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Dao
                                             .Select(x => new ProductOption
                                             {
                                                 Id = int.Parse(x[0].Trim()),
-                                                Name = x[1].Trim()
+                                                Value = x[1].Trim()
                                             })
                                             .ToList();
 

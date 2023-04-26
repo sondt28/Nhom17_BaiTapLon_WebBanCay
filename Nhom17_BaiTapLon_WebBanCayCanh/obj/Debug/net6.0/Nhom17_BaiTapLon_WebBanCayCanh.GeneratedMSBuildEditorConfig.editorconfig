@@ -28,24 +28,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/ProductOptions1/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdE9wdGlvbnMxXENyZWF0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/ProductOptions1/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdE9wdGlvbnMxXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/ProductOptions1/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdE9wdGlvbnMxXERldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/ProductOptions1/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdE9wdGlvbnMxXEVkaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/ProductOptions1/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdE9wdGlvbnMxXEluZGV4LmNzaHRtbA==
+[C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/ProductOptions/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdE9wdGlvbnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/Products/Index.cshtml]

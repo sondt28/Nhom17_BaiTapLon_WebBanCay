@@ -8,7 +8,7 @@
             <th>STT</th>
             <th>Id</th>
             <th>Tên</th>
-            <th>Danh mục</th>
+            <th>Sản phẩm</th>
             <th></th>
         </tr>
     </thead>
@@ -44,7 +44,7 @@
                     <td>
                         <button onclick="Details('@item.Id')" class="btn btn-success">Chi tiết</button>
                         <button onclick="Edit(@item.Id)" class="btn btn-primary">Sửa</button>
-                        <button onclick="Edit(@item.Id)" class="btn btn-warning">Biến thể</button>
+                        
                     </td>
                 </tr>
                 counter++;
@@ -286,7 +286,5 @@
                 }
             })
         }
-
-
     </script>
 }

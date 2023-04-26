@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "a4wrc3zfxFzXGkd7f/FgFx2pkWMg6nS3FsmiZ0SpZzo=",
+  "Hash": "hex0Tz6NY/xudYNEbBzPohXHIXLxTxPrnQt2o0hHB7I=",
   "Source": "Nhom17_BaiTapLon_WebBanCayCanh",
   "BasePath": "_content/Nhom17_BaiTapLon_WebBanCayCanh",
   "Mode": "Default",
@@ -170,6 +170,23 @@
       "OriginalItemSpec": "wwwroot\\images\\3b2a434a-40d2-4174-b352-12905403b9da_950b58d65c0c3e02de04d1fe42eea6ef.jpg"
     },
     {
+      "Identity": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\images\\3ec0a8af-cb26-4d70-b5a3-cb7207c77dd5_1ac5e497efbf1b669ffc30ded13a4a89.jpg",
+      "SourceId": "Nhom17_BaiTapLon_WebBanCayCanh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\",
+      "BasePath": "_content/Nhom17_BaiTapLon_WebBanCayCanh",
+      "RelativePath": "images/3ec0a8af-cb26-4d70-b5a3-cb7207c77dd5_1ac5e497efbf1b669ffc30ded13a4a89.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\3ec0a8af-cb26-4d70-b5a3-cb7207c77dd5_1ac5e497efbf1b669ffc30ded13a4a89.jpg"
+    },
+    {
       "Identity": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\images\\45f04405-20b7-4b34-b214-93b61ca2f083_b0f19755dc135ecf8ddd6a5ebb5dbb70.jpg",
       "SourceId": "Nhom17_BaiTapLon_WebBanCayCanh",
       "SourceType": "Discovered",
@@ -187,6 +204,23 @@
       "OriginalItemSpec": "wwwroot\\images\\45f04405-20b7-4b34-b214-93b61ca2f083_b0f19755dc135ecf8ddd6a5ebb5dbb70.jpg"
     },
     {
+      "Identity": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\images\\48598dab-70fa-4179-b321-d35846a05ed3_1ac5e497efbf1b669ffc30ded13a4a89.jpg",
+      "SourceId": "Nhom17_BaiTapLon_WebBanCayCanh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\",
+      "BasePath": "_content/Nhom17_BaiTapLon_WebBanCayCanh",
+      "RelativePath": "images/48598dab-70fa-4179-b321-d35846a05ed3_1ac5e497efbf1b669ffc30ded13a4a89.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\48598dab-70fa-4179-b321-d35846a05ed3_1ac5e497efbf1b669ffc30ded13a4a89.jpg"
+    },
+    {
       "Identity": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\images\\4c08ed2e-2652-47c8-b6a4-49bbb8dd791d_950b58d65c0c3e02de04d1fe42eea6ef.jpg",
       "SourceId": "Nhom17_BaiTapLon_WebBanCayCanh",
       "SourceType": "Discovered",
@@ -202,6 +236,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\4c08ed2e-2652-47c8-b6a4-49bbb8dd791d_950b58d65c0c3e02de04d1fe42eea6ef.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\images\\515396a6-3368-4a29-9b8b-4d2f417f474e_1ac5e497efbf1b669ffc30ded13a4a89.jpg",
+      "SourceId": "Nhom17_BaiTapLon_WebBanCayCanh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\",
+      "BasePath": "_content/Nhom17_BaiTapLon_WebBanCayCanh",
+      "RelativePath": "images/515396a6-3368-4a29-9b8b-4d2f417f474e_1ac5e497efbf1b669ffc30ded13a4a89.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\515396a6-3368-4a29-9b8b-4d2f417f474e_1ac5e497efbf1b669ffc30ded13a4a89.jpg"
     },
     {
       "Identity": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\images\\530315d5-a073-49e5-b418-7f71257bf44b_950b58d65c0c3e02de04d1fe42eea6ef.jpg",
@@ -270,6 +321,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\6294e80e-48c5-4301-a29b-a5e57bf30e1c_950b58d65c0c3e02de04d1fe42eea6ef.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\images\\6c9ad7bd-3e5f-4fa8-883d-34aee3067bda_40cc61979b1b706ff1c5ce6e432bf890.jpg",
+      "SourceId": "Nhom17_BaiTapLon_WebBanCayCanh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\",
+      "BasePath": "_content/Nhom17_BaiTapLon_WebBanCayCanh",
+      "RelativePath": "images/6c9ad7bd-3e5f-4fa8-883d-34aee3067bda_40cc61979b1b706ff1c5ce6e432bf890.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\6c9ad7bd-3e5f-4fa8-883d-34aee3067bda_40cc61979b1b706ff1c5ce6e432bf890.jpg"
     },
     {
       "Identity": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\images\\72842a20-459a-4b68-855c-4899ab68ed60_950b58d65c0c3e02de04d1fe42eea6ef.jpg",
@@ -355,6 +423,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\7e897d97-d01f-4c22-b3fc-22e2bc473ecb_63159ac1f5dc8e261cb726c873151197 (1).jpg"
+    },
+    {
+      "Identity": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\images\\81dc3ac7-a45a-4572-b18d-66f38e2c2cb7_40cc61979b1b706ff1c5ce6e432bf890.jpg",
+      "SourceId": "Nhom17_BaiTapLon_WebBanCayCanh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\",
+      "BasePath": "_content/Nhom17_BaiTapLon_WebBanCayCanh",
+      "RelativePath": "images/81dc3ac7-a45a-4572-b18d-66f38e2c2cb7_40cc61979b1b706ff1c5ce6e432bf890.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\81dc3ac7-a45a-4572-b18d-66f38e2c2cb7_40cc61979b1b706ff1c5ce6e432bf890.jpg"
     },
     {
       "Identity": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\images\\83ad65dc-46f9-4112-b84b-48d2e5532dc4_950b58d65c0c3e02de04d1fe42eea6ef.jpg",
@@ -663,12 +748,12 @@
       "OriginalItemSpec": "wwwroot\\images\\f1c0fb4f-683d-4f2a-9b7f-f1beaf6795cb_950b58d65c0c3e02de04d1fe42eea6ef.jpg"
     },
     {
-      "Identity": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\images\\f7bd4f80-a9c3-4629-93b1-4177fe9f68f9_950b58d65c0c3e02de04d1fe42eea6ef.jpg",
+      "Identity": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\images\\f91b889d-5d17-4ec3-a7e8-48cbe9a69fa2_1ac5e497efbf1b669ffc30ded13a4a89.jpg",
       "SourceId": "Nhom17_BaiTapLon_WebBanCayCanh",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\",
       "BasePath": "_content/Nhom17_BaiTapLon_WebBanCayCanh",
-      "RelativePath": "images/f7bd4f80-a9c3-4629-93b1-4177fe9f68f9_950b58d65c0c3e02de04d1fe42eea6ef.jpg",
+      "RelativePath": "images/f91b889d-5d17-4ec3-a7e8-48cbe9a69fa2_1ac5e497efbf1b669ffc30ded13a4a89.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -677,7 +762,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\f7bd4f80-a9c3-4629-93b1-4177fe9f68f9_950b58d65c0c3e02de04d1fe42eea6ef.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\f91b889d-5d17-4ec3-a7e8-48cbe9a69fa2_1ac5e497efbf1b669ffc30ded13a4a89.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\images\\fd9d1fd7-519f-4d5c-af52-51a9c58ef174_1ac5e497efbf1b669ffc30ded13a4a89.jpg",
+      "SourceId": "Nhom17_BaiTapLon_WebBanCayCanh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\",
+      "BasePath": "_content/Nhom17_BaiTapLon_WebBanCayCanh",
+      "RelativePath": "images/fd9d1fd7-519f-4d5c-af52-51a9c58ef174_1ac5e497efbf1b669ffc30ded13a4a89.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\fd9d1fd7-519f-4d5c-af52-51a9c58ef174_1ac5e497efbf1b669ffc30ded13a4a89.jpg"
     },
     {
       "Identity": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\js\\modal\\product_modal.js",
