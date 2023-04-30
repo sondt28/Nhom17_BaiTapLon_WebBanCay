@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MailKit.Search;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Nhom17_BaiTapLon_WebBanCayCanh.Dao;
 using Nhom17_BaiTapLon_WebBanCayCanh.Models;
-using Nhom17_BaiTapLon_WebBanCayCanh.ViewModels;
 using System.Data;
+using System.Drawing.Printing;
 
 namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
 {
@@ -21,6 +22,34 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
         {
             ProductViewModel products = ProductDao.GetProducts(_configuration);
             return View(products);
+        }
+        public IActionResult ProductPages(string searchString, int? pageNumber, int? categoryId)
+        {
+            var search = searchString ?? "";
+            var pageNum = pageNumber ?? 1;
+            var category = categoryId ?? 0;
+            ViewData["CurrentFilter"] = search;
+            int pageSize = 6;
+            var items = ProductDao.GetProductPages(_configuration, pageSize, pageNum, search, category);
+
+            return View(items);
+        }
+        public IActionResult ProductDetailsPage(int productId)
+        {
+            Product product = ProductDao.GetProduct(_configuration, productId);
+            ProductViewModel model = new ProductViewModel()
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Description = product.Description,
+                Availability = product.Availability,
+                Image = product.Image,
+                StockQuantity = product.StockQuantity,
+                Price = product.Price,
+                CategoryId = product.Category.Id,
+                CategoryName = product.Category.Name
+            };
+            return View(model);
         }
         public JsonResult Create()
         {
@@ -44,6 +73,8 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
                 Description = product.Description,
                 Image = image,
                 Availability = product.Availability,
+                StockQuantity = product.StockQuantity,
+                Price = product.Price,
                 CategoryId = product.CategoryId
             };
             ProductDao.CreateProduct(_configuration, model);
@@ -62,6 +93,8 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
                 Description = product.Description,
                 Availability = product.Availability,
                 Image = product.Image,
+                StockQuantity = product.StockQuantity,
+                Price = product.Price,
                 CategoryId = product.Category.Id,
                 CategoryList = categories.Select(u => new SelectListItem
                 {
@@ -82,6 +115,8 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
                 Name = product.Name,
                 Description = product.Description,
                 Availability = product.Availability,
+                StockQuantity = product.StockQuantity,
+                Price = product.Price,
                 CategoryId = product.Category.Id,
                 CategoryName = product.Category.Name,
                 Image = product.Image
@@ -112,6 +147,8 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
                 Description = product.Description,
                 Image = image,
                 Availability = product.Availability,
+                StockQuantity = product.StockQuantity,
+                Price = product.Price,
                 CategoryId = product.CategoryId
             };
             ProductDao.UpdateProduct(_configuration, model);

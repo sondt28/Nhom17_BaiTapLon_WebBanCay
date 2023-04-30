@@ -64,6 +64,21 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Dao
 
             return categories;
         }
+        public static List<Category> GetSubCategoriesOfCategory(IConfiguration configuration, int? parentCategoryId)
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection sqlConnection = new SqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            {
+                sqlConnection.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter("sp_getSubcategories", sqlConnection);
+                adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                adapter.SelectCommand.Parameters.AddWithValue("ParentCategoryId", parentCategoryId);
+                adapter.Fill(dataTable);
+            }
+            List<Category> categories = ConvertDataTableToCategoriesWithoutParentCategory(dataTable);
+
+            return categories;
+        }
         public static Category GetCategory(IConfiguration configuration, int id)
         {
             DataTable dataTable = new DataTable();

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Nhom17_BaiTapLon_WebBanCayCanh.Models;
 
@@ -11,14 +12,5 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Data
 
         }
         public DbSet<User> Users { get; set; }
-        public DbSet<Nhom17_BaiTapLon_WebBanCayCanh.Models.ProductOption>? ProductOption { get; set; }
-        //public DbSet<Address> Addresses { get; set; }
-        //public DbSet<Category> Categories { get; set; }
-        //public DbSet<Product> Products { get; set; }
-        //public DbSet<ProductOption> ProductOptions { get; set; }
-        //public DbSet<OrderItem> OrderItems { get; set; }
-        //public DbSet<Order> Orders { get; set; }
-        //public DbSet<Shipping> Shipping { get; set; }
-        //public DbSet<Payment> Payment { get; set; }
     }
 }

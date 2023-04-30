@@ -8,7 +8,7 @@
             <th>STT</th>
             <th>Id</th>
             <th>Tên</th>
-            <th>Sản phẩm</th>
+            <th>Danh mục</th>
             <th></th>
         </tr>
     </thead>
@@ -73,6 +73,14 @@
                     <div>
                         <input asp-for="ProfileImage" accept="image/*"/>
                     </div>
+                    <label asp-for="Price"></label>
+                    <div>
+                        <input asp-for="Price" />
+                    </div>
+                    <label asp-for="StockQuantity"></label>
+                    <div>
+                        <input asp-for="StockQuantity" />
+                    </div>
                     <label asp-for="Description"></label>
                     <div>
                         <textarea asp-for="Description"></textarea>
@@ -119,6 +127,14 @@
                     <label class="nameProduct" asp-for="ProfileImage"></label>
                     <div>
                         <input type="file" name="ProfileImage" accept="image/*" />
+                    </div>
+                    <label asp-for="Price"></label>
+                    <div>
+                        <input class="priceProduct" asp-for="Price" />
+                    </div>
+                    <label asp-for="StockQuantity"></label>
+                    <div>
+                        <input class="stockQuantityProduct" asp-for="StockQuantity" />
                     </div>
                     <label asp-for="Description"></label>
                     <div>
@@ -207,7 +223,9 @@
                     $(".nameProduct").val(data.name);
                     $(".descriptionProduct").val(data.description);
                     $(".availabilityProduct").prop("checked", data.availability);
-                    
+                    $(".priceProduct").val(data.price);
+                    $(".stockQuantityProduct").val(data.stockQuantity);
+
                     if (data.categoryId == 0) {
                         var obj = '';
                         obj += `<option disabled selected>--Chọn danh mục--</option>`;
@@ -264,6 +282,18 @@
                             </dt>
                             <dd class = "col-sm-10">
                                 ${data.availability}
+                            </dd>
+                            <dt class = "col-sm-2">
+                                Giá
+                            </dt>
+                            <dd class = "col-sm-10">
+                                ${data.price}
+                            </dd>
+                            <dt>
+                                Số lượng còn
+                            </dt>
+                            <dd class = "col-sm-10">
+                                ${data.stockQuantity}
                             </dd>
                             <dt class = "col-sm-2">
                                 Danh mục

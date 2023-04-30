@@ -1,0 +1,93 @@
+﻿@model UserViewModel
+
+<h1>User List</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Role</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.Users)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoleName)
+                </td>
+                <td>
+                    <button onclick="Edit('@item.Id')" class="btn btn-primary">Edit</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*UPDATE*@
+
+<div class="madal fade modal" id="UpdateUserModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>Update Role</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form asp-action="Edit" asp-controller="User" method="post" data-ajax="true" data-ajax-success="onCreateSuccess">
+                <div class="modal-body">
+                    <input type="hidden" asp-for="Id" class="userId"/>
+                    <label asp-for="Email"></label>
+                    <div>
+                        <input asp-for="Email" readonly class="userEmail"/>
+                    </div>
+                    <div class="mt-2">
+                        <label asp-for="RoleId"></label>
+                        <select asp-for="RoleId" asp-items="@Model.RoleList" class="roleSelect">
+                            <option disabled selected>--Select Role--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <div>
+                        <input type="submit" class="btn btn-success" value="Update"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        function Edit(id) {
+            $.ajax({
+                url: 'User/Edit?id=' + id,
+                type: 'GET',
+                contentType: 'application/json;character=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    $("#UpdateUserModal").modal('show');
+                    $(".userId").val(data.id);
+                    $(".userEmail").val(data.email)
+                    var obj = '';
+                    obj += `<option disabled selected>--Select Role--</option>`;
+                    $.each(data.roleList, function (index, item) {
+                        obj += `<option value="${item.value}">` + item.text + `</option>`;
+                    });
+                    $(".roleSelect").html(obj);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            })
+        }
+    </script>
+}

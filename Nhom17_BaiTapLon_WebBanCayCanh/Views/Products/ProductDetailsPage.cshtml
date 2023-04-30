@@ -1,0 +1,27 @@
+﻿@model ProductViewModel
+
+<h1>
+    @Html.DisplayFor(modelItem => Model.CategoryName)
+</h1>
+
+<div class="d-flex">
+    <div>
+        <img src="~/images/@Model.Image" height="400" width="400" asp-append-version="true" /> 
+    </div>
+    <div>
+        <h3>
+            @Html.DisplayFor(modelItem => Model.Name)
+        </h3>
+        <h3>
+            @Html.DisplayFor(modelItem => Model.Price)
+        </h3>
+        <h3>
+            @Html.DisplayFor(modelItem => Model.Description)
+        </h3>
+    </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,15 @@
+﻿@model List<Category>
+
+<ul>
+    @foreach (var category in Model)
+    {
+        <li>
+            <a class="text-decoration-none" asp-action="ProductPages" asp-controller="Products" asp-route-categoryId="@category.Id" >@category.Name</a>
+
+            @if (category.ChildCategories.Any())
+            {
+                @Html.Partial("_Subcategories", category.ChildCategories)
+            }
+        </li>
+    }
+</ul>

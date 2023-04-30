@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Nhom17_BaiTapLon_WebBanCayCanh.Dao;
 using Nhom17_BaiTapLon_WebBanCayCanh.Models;
 
@@ -20,6 +21,15 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
 
             return View(categoryViewModel);
         }
+
+        public PartialViewResult CategoriesPage()
+        {
+            CategoryViewModel categoryViewModel = new CategoryViewModel();
+            categoryViewModel.Categories = GetCategories();
+
+            return PartialView(categoryViewModel);
+        }
+
         public JsonResult Create()
         {
             List<Category> categories = CategoryDao.GetCategoriesWithoutProduct(_configuration);
@@ -105,6 +115,18 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
                 ParentCategory = category.ParentCategory
             };
             return new JsonResult(model);
+        }
+
+        private List<Category> GetCategories(int? parentId = null)
+        {
+            var categories = CategoryDao.GetSubCategoriesOfCategory(_configuration, parentId);
+
+            foreach (var category in categories)
+            {
+                category.ChildCategories = GetCategories(category.Id);
+            }
+
+            return categories;
         }
     }
 }

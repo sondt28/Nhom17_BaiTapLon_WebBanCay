@@ -177,7 +177,7 @@
                 <h1>Delete Option</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form asp-action="Delete" asp-controller="Categories" method="post" data-ajax="true" data-ajax-success="onCreateSuccess">
+            <form asp-action="Delete" asp-controller="ProductOptions" method="post" data-ajax="true" data-ajax-success="onCreateSuccess">
                 <div class="modal-body">
                     <h4>Are you sure do delete option "<span class="nameProductOption"></span>" ?</h4>
                     <input class="productOptionId" asp-for="Id" type="hidden"/>

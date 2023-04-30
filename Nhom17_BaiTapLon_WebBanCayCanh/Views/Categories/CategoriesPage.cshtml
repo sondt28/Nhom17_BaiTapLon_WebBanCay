@@ -1,0 +1,20 @@
+﻿@model Nhom17_BaiTapLon_WebBanCayCanh.Models.CategoryViewModel
+
+<div class="d-flex ">
+    <div>
+        <h5>Danh mục sản phẩm</h5>
+        <ul>
+            @foreach (var category in Model.Categories)
+            {
+                <li>
+                    <a class="text-decoration-none" href="@Url.Action("Category", "Products", new { categoryId = category.Id })">@category.Name</a>
+
+                    @if (category.ChildCategories.Any())
+                    {
+                        @Html.Partial("_Subcategories", category.ChildCategories)
+                    }
+                </li>
+            }
+        </ul>
+    </div>
+</div>

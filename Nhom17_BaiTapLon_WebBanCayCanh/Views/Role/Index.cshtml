@@ -1,0 +1,172 @@
+﻿@model RoleViewModel
+
+<h1>Role List</h1>
+<button id="RoleModalClick" class="btn btn-primary">Create New Role</button>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.Roles)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <button onclick="Edit('@item.Id')" class="btn btn-link">Edit</button>|
+                    <button onclick="Delete('@item.Id')" class="btn btn-link">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*CREATE*@
+
+<div class="madal fade modal" id="RoleModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>Create Role</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form asp-action="Create" asp-controller="Role" method="post" data-ajax="true" data-ajax-success="onCreateSuccess">
+                <div class="modal-body">
+                    <label asp-for="Name"></label>
+                    <div>
+                        <input asp-for="Name" />
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <div>
+                        <input type="submit" class="btn btn-primary" value="Create"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*UPDATE*@
+
+<div class="madal fade modal" id="UpdateRoleModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>Update Role</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form asp-action="Edit" asp-controller="Role" method="post" data-ajax="true" data-ajax-success="onCreateSuccess">
+                <div class="modal-body">
+                    <div>
+                        <input class="roleId" asp-for="Id" type="hidden"/>
+                        <input class="concurrencyStamp" asp-for="ConcurrencyStamp" type="hidden"/>
+                    </div>
+                    <label asp-for="Name"></label>
+                    <div>
+                        <input class="roleName" asp-for="Name"/>
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <div>
+                        <input type="submit" class="btn btn-success" value="Update"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*DELETE*@
+
+<div class="madal fade modal" id="DeleteRoleModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>Delete Role</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form asp-action="Delete" asp-controller="Role" method="post" data-ajax="true" data-ajax-success="onCreateSuccess">
+                <div class="modal-body">
+                    <h4>Are you sure do delete role "<span class="roleName"></span>" ?</h4>
+                    <input class="roleId" asp-for="Id" type="hidden"/>
+                    <input class="concurrencyStamp" asp-for="ConcurrencyStamp" type="hidden"/>
+                    <input class="roleName" asp-for="Name" type="hidden"/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <div>
+                        <input type="submit" class="btn btn-danger" value="Delete"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    
+    <script type="text/javascript"> 
+        $("#RoleModalClick").click(function () {
+            $("#RoleModal").modal('show');
+        })
+
+        function Edit(id) {
+            $.ajax({
+                url: 'Role/Edit?id=' + id,
+                type: 'GET',
+                contentType: 'application/json;character=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    $("#UpdateRoleModal").modal('show');
+                    $(".roleName").val(data.name);
+                    $(".roleId").val(data.id);
+                    $(".concurrencyStamp").val(data.concurrencyStamp);
+                    
+                    console.log(data);
+                },
+                error: function () {
+                    
+                }
+            })
+        }
+        
+        function Delete(id) {
+            $.ajax({
+                url: 'Role/Delete?id=' + id,
+                type: 'GET',
+                contentType: 'application/json;character=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    $("#DeleteRoleModal").modal('show');
+                    $(".roleName").html(data.name);
+                    $(".roleId").val(data.id);
+                    $(".concurrencyStamp").val(data.concurrencyStamp);
+                    $(".roleName").val(data.name);
+                    console.log(data);
+                },
+                error: function () {
+                    
+                }
+            })
+        }
+    </script>
+}

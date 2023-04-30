@@ -17,27 +17,25 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <form asp-action="ProductPages" asp-controller="Products" class="d-flex" method="get">
+                  <input class="form-control me-2" type="search" name="SearchString" placeholder="Search" aria-label="Search" value="@ViewData["CurrentFilter"]">
+                  <input class="btn btn-outline-success" type="submit" value="Search" />
+                </form>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Người dùng</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index">Danh mục</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Sản phấm</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ProductOptions" asp-action="Index">Biến thể sản phẩm</a>
-                        </li>
+                        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                        <partial name="_LoginPartialCustom"/>
                     </ul>
                 </div>
+                
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div class="d-flex ">
+        <div class="mx-3">
+            @await Component.InvokeAsync("CategoryList");
+        </div>
+        <main role="main" class="ml-3 flex-sm-fill">
             @RenderBody()
         </main>
     </div>

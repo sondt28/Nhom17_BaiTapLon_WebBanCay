@@ -1,0 +1,42 @@
+﻿@model PaginatedList<Product>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+<h5>Tất cả sản phẩm</h5>
+
+<div class="container">
+    <div class="row row-cols-3">
+        @foreach (var item in Model.Items)
+        {
+            <div class="col">
+                <a class="text-decoration-none text-dark" asp-action="ProductDetailsPage" asp-route-productId="@item.Id" >
+                    <img src="~/images/@item.Image" height="250" width="250" asp-append-version="true" /> 
+                    <h4>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </h4>
+                    <h3>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </h3>
+                </a>
+            </div>
+        }
+    </div>
+    <a asp-action="ProductPages"
+       asp-route-pageNumber="@(Model.PageIndex - 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-default @prevDisabled">
+        Previous
+    </a>
+    <a asp-action="ProductPages"
+       asp-route-pageNumber="@(Model.PageIndex + 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-default @nextDisabled">
+        Next
+    </a>
+</div>
+    
+
+
+
+

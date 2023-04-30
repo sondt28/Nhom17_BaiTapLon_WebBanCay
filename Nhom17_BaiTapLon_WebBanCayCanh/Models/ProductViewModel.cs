@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Nhom17_BaiTapLon_WebBanCayCanh.Models
 {
@@ -12,6 +14,10 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Models
         [MaxLength(5000)]
         [Required]
         public string? Description { get; set; }
+        [Required]
+        public int StockQuantity { get; set; }
+        [Required]
+        public decimal Price { get; set; }
         public string Image { get; set; }
         [Required]
         public bool Availability { get; set; }

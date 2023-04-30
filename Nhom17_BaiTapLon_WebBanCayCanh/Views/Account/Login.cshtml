@@ -1,0 +1,24 @@
+﻿@model LoginViewModel
+<h1>Login</h1>
+<form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["returnurl"]" method="post">
+    <div asp-validation-summary="All"></div>
+    <label asp-for="Email"></label>
+    <div>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <label asp-for="Password"></label>
+    <div>
+        <input asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div class="my-2">
+        <input type="submit" class="btn btn-success" />
+    </div>
+</form>
+<a asp-action="ForgotPassword" asp-controller="Account">Forgot Password ?</a>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
