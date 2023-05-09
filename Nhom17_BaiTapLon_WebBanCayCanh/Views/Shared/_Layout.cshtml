@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Nhom17_BaiTapLon_WebBanCayCanh</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Nhom17_BaiTapLon_WebBanCayCanh.styles.css" asp-append-version="true" />
@@ -12,7 +13,17 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">E_commerce</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Products" asp-action="ProductPages">E_commerce</a>
+                <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                  <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Danh mục
+                      </a>
+                      @await Component.InvokeAsync("CategoryList")
+                    </li>
+                  </ul>
+                </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -31,10 +42,7 @@
             </div>
         </nav>
     </header>
-    <div class="d-flex ">
-        <div class="mx-3">
-            @await Component.InvokeAsync("CategoryList");
-        </div>
+    <div class="container">
         <main role="main" class="ml-3 flex-sm-fill">
             @RenderBody()
         </main>

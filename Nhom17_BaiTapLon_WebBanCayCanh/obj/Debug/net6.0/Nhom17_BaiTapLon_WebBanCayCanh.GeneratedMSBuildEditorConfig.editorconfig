@@ -64,6 +64,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/Order/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/ProductOptions/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdE9wdGlvbnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -84,12 +88,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/Shared/Components/Cart/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQ2FydFxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/Shared/Components/CategoryList/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQ2F0ZWdvcnlMaXN0XERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/Shared/_CartLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DYXJ0TGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/Shared/_CreateOrderItem.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DcmVhdGVPcmRlckl0ZW0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/Shared/_LoginPartialCustom.cshtml]

@@ -4,7 +4,7 @@
 @inject UserManager<User> UserManager
 
 
-<ul class="navbar-nav flex-grow-1 justify-content-end">
+<ul class="navbar-nav flex-grow-1 justify-content-end align-items-center">
     @if (SignInManager.IsSignedIn(User)) {
         @if (User.IsInRole("Admin")) {
             <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
@@ -24,6 +24,7 @@
               </ul>
             </div>
         }
+        <li class="mr-2">@await Component.InvokeAsync("Cart")</li>
        <li class="nav-item">
             <a class="nav-link text-dark" href="#">Hello @UserManager.GetUserName(User)</a>
         </li>
@@ -34,6 +35,7 @@
         </li>
     } else
     {
+        <li class="mr-2">@await Component.InvokeAsync("Cart")</li>
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
         </li>

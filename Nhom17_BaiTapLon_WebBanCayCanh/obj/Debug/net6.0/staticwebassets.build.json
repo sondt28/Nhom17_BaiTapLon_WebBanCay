@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OHLEZEXD994aumK5CKE5Y1Ak9ahAf9EQM5Ib99RJdIs=",
+  "Hash": "XuIcIjRHA7KMRUN7e81BHmVGkC4GuH1cMvG0K1+2/mU=",
   "Source": "Nhom17_BaiTapLon_WebBanCayCanh",
   "BasePath": "_content/Nhom17_BaiTapLon_WebBanCayCanh",
   "Mode": "Default",
@@ -100,6 +100,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\1266323b-b508-41d6-9b2b-37af9f9d5c66_63159ac1f5dc8e261cb726c873151197 (1).jpg"
+    },
+    {
+      "Identity": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\images\\56814d2e-4710-4543-828c-e56e2b5c0212_251db2f4974f792ff82b03cbe11dcca9.jpg",
+      "SourceId": "Nhom17_BaiTapLon_WebBanCayCanh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\",
+      "BasePath": "_content/Nhom17_BaiTapLon_WebBanCayCanh",
+      "RelativePath": "images/56814d2e-4710-4543-828c-e56e2b5c0212_251db2f4974f792ff82b03cbe11dcca9.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\56814d2e-4710-4543-828c-e56e2b5c0212_251db2f4974f792ff82b03cbe11dcca9.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\images\\8519e155-9045-4c3c-a021-e86da60b20a9_0401387bea93ba2f22f53c8fbc5e6ea9.jpg",
+      "SourceId": "Nhom17_BaiTapLon_WebBanCayCanh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\",
+      "BasePath": "_content/Nhom17_BaiTapLon_WebBanCayCanh",
+      "RelativePath": "images/8519e155-9045-4c3c-a021-e86da60b20a9_0401387bea93ba2f22f53c8fbc5e6ea9.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\8519e155-9045-4c3c-a021-e86da60b20a9_0401387bea93ba2f22f53c8fbc5e6ea9.jpg"
     },
     {
       "Identity": "C:\\Users\\son\\Documents\\c#_project\\Nhom17_BaiTapLon_WebBanCayCanh\\Nhom17_BaiTapLon_WebBanCayCanh\\wwwroot\\images\\8f706f85-23e1-4750-a778-e0be44f52a18_63159ac1f5dc8e261cb726c873151197 (1).jpg",

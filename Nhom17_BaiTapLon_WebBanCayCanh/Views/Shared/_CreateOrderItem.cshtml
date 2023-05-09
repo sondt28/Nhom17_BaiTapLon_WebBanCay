@@ -1,0 +1,18 @@
+﻿@model OrderItemViewModel
+
+
+<form asp-action="Create" asp-controller="OrderItem" method="post">
+    <input type="hidden" asp-for="Price" asp-route-price="@Model.Price">
+    <input type="hidden" asp-for="ProductId" asp-route-price="@Model.ProductId">
+    <input type="hidden" asp-for="ProductOptionId" asp-route-price="@Model.ProductOptionId">
+    <input asp-for="Quantity" asp-route-quantity="@Model.Quantity">
+    <input type="submit" value="Đặt" class="btn btn-primary btn-sm">
+    <br />
+    <span asp-validation-for="Quantity" class="text-danger"></span>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -26,6 +26,8 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Models
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public IEnumerable<SelectListItem> CategoryList { get; set; }
+        public List<ProductOption>? ProductOptions;
+        public int? ProductOptionId { get; set; }
         
     }
 }

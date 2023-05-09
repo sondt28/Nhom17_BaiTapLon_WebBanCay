@@ -4,7 +4,7 @@
     @foreach (var category in Model)
     {
         <li>
-            <a class="text-decoration-none" asp-action="ProductPages" asp-controller="Products" asp-route-categoryId="@category.Id" >@category.Name</a>
+            <a class="dropdown-item" asp-action="ProductPages" asp-controller="Products" asp-route-categoryId="@category.Id" >@category.Name</a>
 
             @if (category.ChildCategories.Any())
             {

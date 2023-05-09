@@ -34,9 +34,12 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
 
             return View(items);
         }
-        public IActionResult ProductDetailsPage(int productId)
+        public IActionResult ProductDetailsPage(int productId, int? productOptionId)
         {
+
             Product product = ProductDao.GetProduct(_configuration, productId);
+            List< ProductOption> productOptions = ProductOptionDao.GetProductOptionsByProduct(_configuration, productId);
+
             ProductViewModel model = new ProductViewModel()
             {
                 Id = product.Id,
@@ -47,8 +50,19 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
                 StockQuantity = product.StockQuantity,
                 Price = product.Price,
                 CategoryId = product.Category.Id,
-                CategoryName = product.Category.Name
+                CategoryName = product.Category.Name,
+                ProductOptions = productOptions
             };
+            if (productOptionId != null)
+            {
+                model.ProductOptionId = productOptionId;
+            }
+            else if (productOptionId == null && productOptions.Count > 0)
+            {
+                model.ProductOptionId = productOptions[0].Id;
+            }
+            
+
             return View(model);
         }
         public JsonResult Create()

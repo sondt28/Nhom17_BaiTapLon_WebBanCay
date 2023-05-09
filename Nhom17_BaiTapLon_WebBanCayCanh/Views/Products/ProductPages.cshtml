@@ -3,39 +3,46 @@
     var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
     var nextDisabled = !Model.HasNextPage ? "disabled" : "";
 }
-<h5>Tất cả sản phẩm</h5>
+
+<div class="col-md-12">
+    <h2 class="text-muted">Sản phẩm</h2>
+</div>
 
 <div class="container">
     <div class="row row-cols-3">
         @foreach (var item in Model.Items)
         {
-            <div class="col">
-                <a class="text-decoration-none text-dark" asp-action="ProductDetailsPage" asp-route-productId="@item.Id" >
-                    <img src="~/images/@item.Image" height="250" width="250" asp-append-version="true" /> 
-                    <h4>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </h4>
-                    <h3>
-                        @Html.DisplayFor(modelItem => item.Price)
-                    </h3>
-                </a>
+            <div class="col my-2">
+                <div class="card">
+                    <center>
+                        <a asp-action="ProductDetailsPage" asp-route-productId="@item.Id">
+                            <img class="" src="~/images/@item.Image" height="200" width="200" asp-append-version="true" />
+                        </a>
+                    </center>
+                    <div class="card-block ms-2">
+                        <a class="text-muted" asp-action="ProductDetailsPage" asp-route-productId="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+                        <div class="card-text">@Html.DisplayFor(modelItem => item.Price)</div>
+                    </div>
+                </div>
             </div>
         }
     </div>
-    <a asp-action="ProductPages"
-       asp-route-pageNumber="@(Model.PageIndex - 1)"
-       asp-route-currentFilter="@ViewData["CurrentFilter"]"
-       class="btn btn-default @prevDisabled">
-        Previous
-    </a>
-    <a asp-action="ProductPages"
-       asp-route-pageNumber="@(Model.PageIndex + 1)"
-       asp-route-currentFilter="@ViewData["CurrentFilter"]"
-       class="btn btn-default @nextDisabled">
-        Next
-    </a>
+    <div class="mt-2 text-left">
+        <a asp-action="ProductPages"
+           asp-route-pageNumber="@(Model.PageIndex - 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="btn btn-default @prevDisabled">
+            Previous
+        </a>
+        <a asp-action="ProductPages"
+           asp-route-pageNumber="@(Model.PageIndex + 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="btn btn-default @nextDisabled">
+            Next
+        </a>
+    </div>
 </div>
-    
+
 
 
 

@@ -4,24 +4,117 @@
     @Html.DisplayFor(modelItem => Model.CategoryName)
 </h1>
 
-<div class="d-flex">
-    <div>
-        <img src="~/images/@Model.Image" height="400" width="400" asp-append-version="true" /> 
-    </div>
-    <div>
-        <h3>
-            @Html.DisplayFor(modelItem => Model.Name)
-        </h3>
-        <h3>
-            @Html.DisplayFor(modelItem => Model.Price)
-        </h3>
-        <h3>
-            @Html.DisplayFor(modelItem => Model.Description)
-        </h3>
-    </div>
+<div class="row">
+    @if (Model.ProductOptionId != null)
+    {
+        @foreach(var option in Model.ProductOptions)
+        {
+            
+            @if (option.Id == Model.ProductOptionId)
+            {
+                <div class="col-md-4">
+                    <center>
+                        <img src="~/images/@option.Image" height="400" width="400" asp-append-version="true" />
+                    </center>
+                </div>
+                <div class="col-md-8">
+                    <h4>@Html.DisplayFor(modelItem => Model.Name)</h4>
+                    <h5>@Html.DisplayFor(modelItem =>option.Price)</h5>
+                    
+                    <h6>
+                    @foreach(var item in Model.ProductOptions)
+                    {
+                        @if (item.Id == option.Id)
+                        {
+                            <span class="">
+                                <a class="me-1 text-decoration-none btn btn-outline-dark"
+                                    asp-action="ProductDetailsPage" 
+                                    asp-controller="Products" 
+                                    asp-route-productId="@Model.Id" 
+                                    asp-route-productOptionId="@item.Id">@Html.DisplayFor(modelItem => item.Value)
+                                </a>
+                            </span>
+                        } else
+                        {
+                            <span class="">
+                                <a class="me-1 text-decoration-none btn btn-outline-dark"
+                                    asp-action="ProductDetailsPage" 
+                                    asp-controller="Products" 
+                                    asp-route-productId="@Model.Id" 
+                                    asp-route-productOptionId="@item.Id">@Html.DisplayFor(modelItem => item.Value)
+                                </a>
+                            </span>
+                        }    
+                    }
+                    </h6>
+                    
+                    @if (option.StockQuantity > 0)
+                    {
+                        OrderItemViewModel orderItem = new OrderItemViewModel()
+                        {
+                            ProductId = @Model.Id,
+                            ProductOptionId = @Model.ProductOptionId,
+                            Price = Model.Price
+                        };
+                        <partial name="_CreateOrderItem" model="orderItem"/>
+                    } else
+                    {
+                        <h4 class="text-danger">Hết hàng</h4>
+                    }
+                </div>
+            
+                break;
+            }
+        }
+    } else
+    {
+        <div class="col-md-4">
+            <center>
+                <img src="~/images/@Model.Image" height="400" width="400" asp-append-version="true" /> 
+            </center>
+        </div>
+        <div class="col-md-8">
+            <h4>@Html.DisplayFor(modelItem => Model.Name)</h4>
+            <h5>@Html.DisplayFor(modelItem => Model.Price)</h5>
+                    
+            <h5>
+            @foreach(var option in Model.ProductOptions)
+            {
+                <span>
+                    <a 
+                        asp-action="ProductDetailsPage" 
+                        asp-controller="Products" 
+                        asp-route-productId="@Model.Id" 
+                        asp-route-productOptionId="@option.Id">@Html.DisplayFor(modelItem => option.Value)
+                    </a>
+                </span>
+            }
+            </h5>
+                    
+            @if (Model.StockQuantity > 0)
+            {
+                OrderItemViewModel orderItem = new OrderItemViewModel()
+                {
+                    ProductId = @Model.Id,
+                    ProductOptionId = @Model.ProductOptionId,
+                    Price = Model.Price
+                };
+                <partial name="_CreateOrderItem" model="orderItem"/>
+            } else
+            {
+                <h4 class="text-danger">Hết hàng</h4>
+            }
+        </div>
+    }
+</div>    
+
+<div class="mt-1">
+    <h4>Mô tả chi tiết</h4>
+    <p>@Html.DisplayFor(modelItem => Model.Description)</p>
 </div>
 
-
-
-
-
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

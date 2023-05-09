@@ -22,14 +22,6 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
             return View(categoryViewModel);
         }
 
-        public PartialViewResult CategoriesPage()
-        {
-            CategoryViewModel categoryViewModel = new CategoryViewModel();
-            categoryViewModel.Categories = GetCategories();
-
-            return PartialView(categoryViewModel);
-        }
-
         public JsonResult Create()
         {
             List<Category> categories = CategoryDao.GetCategoriesWithoutProduct(_configuration);

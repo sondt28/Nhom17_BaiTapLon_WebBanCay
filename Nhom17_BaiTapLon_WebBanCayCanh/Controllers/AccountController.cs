@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Nhom17_BaiTapLon_WebBanCayCanh.Dao;
 using Nhom17_BaiTapLon_WebBanCayCanh.Models;
 using Nhom17_BaiTapLon_WebBanCayCanh.Services;
 
@@ -9,11 +10,13 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly IConfiguration _configuration;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, IConfiguration configuration)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _configuration = configuration;
         }
 
         public IActionResult Register()
@@ -86,7 +89,14 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
                     var subject = "Confirm account";
                     string text = "Confirm account by clicking here: <a href=\"" + callbackUrl + "\">link</a>";
 
-                    MailSender.SendMail(from, model.Email, subject, text);
+                    MailSender.SendMail(from, "son286202@gmail.com", subject, text);
+
+                    Order order = new Order();
+                    order.UserId = user.Id;
+                    order.Status = OrderStatus.INIT;
+                    order.Date = DateTime.Now;
+                    OrderDao.CreateOrder(_configuration, order);  
+
                     return RedirectToAction("ConfirmAccountConfirmation", "Account");
                 }
                 AddErrors(result);

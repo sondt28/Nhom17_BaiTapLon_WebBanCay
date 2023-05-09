@@ -37,6 +37,21 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Dao
             model.ProductOptions = productOptions;
             return model;
         }
+        public static List<ProductOption> GetProductOptionsByProduct(IConfiguration configuration, int productId)
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection sqlConnection = new SqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            {
+                sqlConnection.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter("sp_getProductOptionByProductId", sqlConnection);
+                adapter.SelectCommand.Parameters.AddWithValue("ProductId", productId);
+                adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                adapter.Fill(dataTable);
+            }
+            List<ProductOption> productOptions = ConvertDataTableToProductOptionsByProduct(dataTable);
+
+            return productOptions;
+        }
         public static ProductOption GetProductOption(IConfiguration configuration, int id)
         {
             DataTable dataTable = new DataTable();
@@ -127,6 +142,22 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Dao
                 }
                 productOption.ProductId = product.Id;
                 productOption.Product = product;
+                productOptions.Add(productOption);
+            }
+            return productOptions;
+        }
+        private static List<ProductOption> ConvertDataTableToProductOptionsByProduct(DataTable dataTable)
+        {
+            List<ProductOption> productOptions = new List<ProductOption>();
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                ProductOption productOption = new ProductOption();
+                productOption.Id = Convert.ToInt32(dataTable.Rows[i]["Id"]);
+                productOption.Value = Convert.ToString(dataTable.Rows[i]["Value"]);
+                productOption.Price = Convert.ToDecimal(dataTable.Rows[i]["Price"]);
+                productOption.StockQuantity = Convert.ToInt32(dataTable.Rows[i]["StockQuantity"]);
+                productOption.ProductId = Convert.ToInt32(dataTable.Rows[i]["ProductId"]);
+                productOption.Image = Convert.ToString(dataTable.Rows[i]["Image"]);
                 productOptions.Add(productOption);
             }
             return productOptions;

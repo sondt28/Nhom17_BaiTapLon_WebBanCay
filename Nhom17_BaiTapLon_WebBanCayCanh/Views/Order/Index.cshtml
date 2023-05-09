@@ -1,0 +1,58 @@
+﻿@{
+    Layout = "_CartLayout";
+}
+
+<div class="container-fluid"> 
+    <div class="container">
+        <form id="cartForm" method="post" action="/Cart/Save" novalidate="novalidate">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td>Tên</td>
+                        <td>Số lượng</td>
+                        <td>Giá</td>
+                        <td>Xóa</td>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td style="width: 15%">
+                                <div class="text-sm-center">
+                                        <img src="/images/test_images/Predator_17X.png">
+                                </div>
+                            </td>
+                            <td style="width: 40%">
+                                <a href="/Product/Acer-Predator-GX-792-77BL-Intel-Core-i7-7th-Gen" class="text-muted" title="Acer Predator GX-792-77BL 17.3&quot; 4K/UHD Intel Core i7 7th Gen 7820HK (2.90 GHz) NVIDIA GeForce GTX 1080 32 GB Memory 512 GB SSD 1 TB HDD Windows 10 Home 64-Bit Gaming Laptop">Acer Predator GX-792-77BL 17.3" 4K/UHD Intel Core i7 7th Gen 7820HK (2.90 GHz) NVIDIA GeForce GTX 1080 32 GB Memory 512 GB SSD 1 TB HDD Windows 10 Home 64-Bit Gaming Laptop</a>
+                            </td>
+                            <td style="width: 17%">
+                                <input type="hidden" name="ids" value="c85f8f8b-3245-4be5-9fa7-96f1df2dbdc7">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="quantity-c85f8f8b-3245-4be5-9fa7-96f1df2dbdc7" data-valmsg-replace="true"></span>
+                            </td>
+                            <td style="width: 18%;">
+                                <div class="">$2,699.00 ea.</div>
+                            </td>
+                            <td style="width: 10%">
+                                <button type="button" class="btn btn-danger remove"><i class="fa fa-close"></i></button>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td style="width: 15%" class="text-sm-right">
+                            <div></div>Total Price:
+                        </td>
+                        <td style="width: 15%">$2,699.00</td>
+                        <td style="width: 10%"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <button type="button" id="save" class="btn btn-success">Save</button>
+                            <a class="btn btn-primary" href="/Cart/Checkout">Checkout</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
