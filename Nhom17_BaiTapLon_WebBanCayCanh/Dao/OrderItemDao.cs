@@ -21,7 +21,7 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Dao
                 cmd.ExecuteNonQuery();
             }
         }
-        public static int GetTotalOfOrderItems(IConfiguration configuration, string userId)
+        public static Order GetTotalOfOrderItems(IConfiguration configuration, string userId)
         {
             DataTable dataTable = new DataTable();
             using (SqlConnection sqlConnection = new SqlConnection(configuration.GetConnectionString("DefaultConnection")))
@@ -33,10 +33,25 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Dao
 
                 adapter.Fill(dataTable);
             }
+            Order order = new Order();
+            if (dataTable.Rows.Count > 0)
+            {
+                order.Count = Convert.ToInt32(dataTable.Rows[0]["TotalOrderItems"]);
+                order.Id = Convert.ToInt32(dataTable.Rows[0]["OrderId"]);
+            }
 
-            int count = Convert.ToInt32(dataTable.Rows[0]["TotalOrderItems"]);
-
-            return count;
+            return order;
+        }
+        public static void DeleteOrderItem(IConfiguration configuration, int orderItemId)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            {
+                sqlConnection.Open();
+                SqlCommand cmd = new SqlCommand("sp_deleteOrderItem", sqlConnection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("OrderItemId", orderItemId);
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }

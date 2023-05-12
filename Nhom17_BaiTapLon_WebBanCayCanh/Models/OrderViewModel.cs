@@ -9,5 +9,6 @@
         public string UserId { get; set; }
         public User User { get; set; }
         public int TotalOrderItems { get; set; }
+        public List<OrderItem> OrderItems { get; set; }  
     }
 }

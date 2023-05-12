@@ -22,10 +22,10 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.ViewComponents
                 orderViewModel.TotalOrderItems = 0;
                 return View(orderViewModel);
             }
-            int count = OrderItemDao.GetTotalOfOrderItems(_configuration, userId);
-            
-            orderViewModel.TotalOrderItems = count;
+            Order order = OrderItemDao.GetTotalOfOrderItems(_configuration, userId);
 
+            orderViewModel.TotalOrderItems = order.Count;
+            orderViewModel.Id = order.Id;
             return View(orderViewModel);
         }
     }

@@ -44,7 +44,6 @@
                     <td>
                         <button onclick="Details('@item.Id')" class="btn btn-success">Chi tiết</button>
                         <button onclick="Edit(@item.Id)" class="btn btn-primary">Sửa</button>
-                        
                     </td>
                 </tr>
                 counter++;
@@ -191,7 +190,7 @@
         $("#ProductModalClick").click(function () {
             
             $.ajax({
-                url: 'Products/Create',
+                url: 'Create',
                 type: 'GET',
                 contentType: 'application/json;character=utf-8',
                 dataType: 'json',
@@ -213,7 +212,7 @@
 
         function Edit(id) {
             $.ajax({
-                url: 'Products/Update?id=' + id,
+                url: 'Update?id=' + id,
                 type: 'GET',
                 contentType: 'application/json;character=utf-8',
                 dataType: 'json',
@@ -258,7 +257,7 @@
 
         function Details(id) {
             $.ajax({
-                url: 'Products/Details?id=' + id,
+                url: 'Details?id=' + id,
                 type: 'GET',
                 contentType: 'application/json;character=utf-8',
                 dataType: 'json',

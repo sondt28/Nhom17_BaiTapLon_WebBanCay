@@ -201,7 +201,7 @@
     <script>
         $("#ProductOptionModalClick").click(function () {
             $.ajax({
-                url: 'ProductOptions/Create',
+                url: 'Create',
                 type: 'GET',
                 contentType: 'application/json;character=utf-8',
                 dataType: 'json',
@@ -223,7 +223,7 @@
 
         function Edit(id) {
             $.ajax({
-                url: 'ProductOptions/Update?id=' + id,
+                url: 'Update?id=' + id,
                 type: 'GET',
                 contentType: 'application/json;character=utf-8',
                 dataType: 'json',
@@ -266,7 +266,7 @@
 
         function Details(id) {
             $.ajax({
-                url: 'ProductOptions/Details?id=' + id,
+                url: 'Details?id=' + id,
                 type: 'GET',
                 contentType: 'application/json;character=utf-8',
                 dataType: 'json',
@@ -315,7 +315,7 @@
 
         function Delete(id) {
             $.ajax({
-                url: 'ProductOptions/Delete?id=' + id,
+                url: 'Delete?id=' + id,
                 type: 'GET',
                 contentType: 'application/json;character=utf-8',
                 dataType: 'json',

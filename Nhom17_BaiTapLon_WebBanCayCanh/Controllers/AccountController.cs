@@ -18,7 +18,6 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
             _signInManager = signInManager;
             _configuration = configuration;
         }
-
         public IActionResult Register()
         {
             RegisterViewModel model = new RegisterViewModel();
@@ -130,7 +129,7 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("ProductPages", "Products");
         }
 
         [HttpPost]

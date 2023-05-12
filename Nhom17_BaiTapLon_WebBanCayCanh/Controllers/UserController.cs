@@ -16,7 +16,10 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
             _userManager = userManager;
             _roleManager = roleManager;
         }
-
+        public IActionResult UserInfo()
+        {
+            return View();
+        }
         public IActionResult Index()
         {
             UserViewModel model = UserDao.getUserRoles(_configuration);

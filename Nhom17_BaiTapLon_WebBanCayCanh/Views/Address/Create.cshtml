@@ -1,0 +1,71 @@
+﻿@model AddressViewModel
+
+<div class="container-fluid">
+    <div class="container">
+        <form method="post" asp-action="Create" asp-controller="Address">
+            <h4>Chỉnh sửa địa chỉ</h4>
+            <hr>
+            <input type="hidden" asp-for="UserId" />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                    <div class="form-horizontal">
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <label class="control-label" asp-for="Name"></label>
+                                <input class="form-control" type="text" asp-for="Name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <label class="control-label" asp-for="PhoneNumber"></label>
+                                <input class="form-control" asp-for="PhoneNumber">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <label class="control-label" asp-for="City"></label>
+                                <input class="form-control"asp-for="City">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <label class="control-label" asp-for="District"></label>
+                                <input class="form-control"asp-for="District">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="control-label" asp-for="SubDistrict"></label>
+                                <input class="form-control"asp-for="SubDistrict">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <label class="control-label" asp-for="AddressDetails"></label>
+                                <input class="form-control"asp-for="AddressDetails">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="control-label" asp-for="Note"></label>
+                            <div class="col-sm-6">
+                            
+                                <textarea asp-for="Note"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a class="btn btn-secondary" asp-action="UserInfo" asp-controller="User"> Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

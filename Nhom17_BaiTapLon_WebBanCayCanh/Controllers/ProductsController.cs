@@ -38,7 +38,7 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
         {
 
             Product product = ProductDao.GetProduct(_configuration, productId);
-            List< ProductOption> productOptions = ProductOptionDao.GetProductOptionsByProduct(_configuration, productId);
+            List<ProductOption> productOptions = ProductOptionDao.GetProductOptionsByProduct(_configuration, productId);
 
             ProductViewModel model = new ProductViewModel()
             {
@@ -61,7 +61,6 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
             {
                 model.ProductOptionId = productOptions[0].Id;
             }
-            
 
             return View(model);
         }

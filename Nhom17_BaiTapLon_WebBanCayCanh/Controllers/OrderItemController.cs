@@ -42,5 +42,13 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
                 productOptionId = model.ProductOptionId
             });
         }
+        public IActionResult Delete(int orderItemId, int order)
+        {
+            string userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Address address = AddressDao.GetAddressByUserId(_configuration, userId);
+            OrderItemDao.DeleteOrderItem(_configuration, orderItemId);
+
+            return RedirectToAction("Index", "Order", new {id = order});
+        }
     }
 }

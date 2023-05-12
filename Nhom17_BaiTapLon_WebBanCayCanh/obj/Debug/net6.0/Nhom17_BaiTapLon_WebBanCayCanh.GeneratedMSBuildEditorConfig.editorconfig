@@ -48,6 +48,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkQ29uZmlybWF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/Address/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRkcmVzc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/Categories/CategoriesPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xDYXRlZ29yaWVzUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -122,6 +126,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/User/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/User/UserInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VySW5mby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/_ViewImports.cshtml]

@@ -178,7 +178,7 @@
         $("#CategoryModalClick").click(function () {
             
             $.ajax({
-                url: 'Categories/Create',
+                url: 'Create',
                 type: 'GET',
                 contentType: 'application/json;character=utf-8',
                 dataType: 'json',
@@ -200,7 +200,7 @@
 
         function Edit(id) {
             $.ajax({
-                url: 'Categories/Update?id=' + id,
+                url: 'Update?id=' + id,
                 type: 'GET',
                 contentType: 'application/json;character=utf-8',
                 dataType: 'json',
@@ -239,7 +239,7 @@
 
         function Details(id) {
             $.ajax({
-                url: 'Categories/Details?id=' + id,
+                url: 'Details?id=' + id,
                 type: 'GET',
                 contentType: 'application/json;character=utf-8',
                 dataType: 'json',
@@ -271,7 +271,7 @@
 
         function Delete(id) {
             $.ajax({
-                url: 'Categories/Delete?id=' + id,
+                url: 'Delete?id=' + id,
                 type: 'GET',
                 contentType: 'application/json;character=utf-8',
                 dataType: 'json',
