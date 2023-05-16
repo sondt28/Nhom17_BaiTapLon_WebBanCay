@@ -1,0 +1,105 @@
+﻿@model AddressAndOrderViewModel
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+<div class="container-fluid">
+    <div class="container">
+        <h5>Order ID: # @Html.DisplayFor(modelItem => Model.OrderId)</h5>
+        <hr>
+        <div class="card card-block order-history">
+            <div class="row">
+                <div class="col-sm-4 ms-2">
+                    <h6>Địa chỉ nhận hàng</h6>
+                    <hr>
+                    <div>Họ tên: @Html.DisplayFor(modelItem => Model.Name)</div>
+                    <div>Số điện thoại: @Html.DisplayFor(modelItem => Model.PhoneNumber)</div>
+                    <div>Địa chỉ: @Html.DisplayFor(modelItem => Model.AddressDetails)</div>
+                    <div>Quận: @Html.DisplayFor(modelItem => Model.District)</div>
+                    <div>Phường: @Html.DisplayFor(modelItem => Model.SubDistrict)</div>
+                    <div>Thành phố: @Html.DisplayFor(modelItem => Model.City)</div>
+                    <div>Ghi chú: @Html.DisplayFor(modelItem => Model.Note)</div>
+                </div>
+                <div class="col-sm-4">
+                    <h6>Thông tin đơn hàng</h6>
+                    <hr>
+                    <div>Order ID: # @Html.DisplayFor(modelItem => Model.OrderId)</div>
+                        <div>Trạng thái: <span class="badge bg-success">@Html.DisplayFor(modelItem => Model.Order.Status)</span>
+                            
+                            @if (User.IsInRole("Admin"))
+                            {
+                                Order order = new Order()
+                                {
+                                  Id = Model.OrderId  
+                                };
+                                <button id="updateStatusOrder" class="btn btn-link">Cập nhật</button>
+                                <partial name="_UpdateStatusOrder" model="order"/>
+                            }    
+                    </div>
+                    <div>Ngày đặt: @Html.DisplayFor(modelItem => Model.Order.Date)</div>
+                </div>
+            </div>
+
+            <br>
+            <div class="row">
+                <div class="col-xs-12 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <td>Tên</td>
+                                <td>Số lượng</td>
+                                <td>Giá</td>
+                                <td>Tổng</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var item in Model.OrderItems)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Product.Name)
+                                         @if (item.ProductOptionId != 0)
+                                        {
+                                            <span class="badge bg-warning">
+                                                @Html.DisplayFor(modelItem => item.ProductOption.Value)
+                                            </span>
+                                        }
+                                    </td>
+                                    <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                                    <td>
+                                        @{
+                                            decimal totalPrice;
+                                            totalPrice = item.Price * item.Quantity;
+                                        }
+                                        @totalPrice
+                                    </td>
+                                </tr>
+                            }
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td class="float-sm-right">Tổng cộng:</td>
+                                <td>@Model.TotalAmount</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        $("#updateStatusOrder").click(function () {
+            $("#statusOrder").modal('show');
+        })
+
+    </script>
+}

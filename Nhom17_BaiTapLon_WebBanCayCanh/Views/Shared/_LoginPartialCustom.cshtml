@@ -16,6 +16,7 @@
                     <li><a class="dropdown-item" asp-controller="Categories" asp-action="Index">Danh mục</a></li>
                     <li><a class="dropdown-item" asp-controller="Products" asp-action="Index">Sản phẩm</a></li>
                     <li><a class="dropdown-item" asp-controller="ProductOptions" asp-action="Index">Biến thể sản phẩm</a></li>
+                    <li><a class="dropdown-item" asp-controller="Order" asp-action="GetOrders">Đơn hàng</a></li>
                     <li><a class="dropdown-item" asp-controller="User" asp-action="Index">Người dùng</a></li>
                     <li><a class="dropdown-item" asp-controller="Role" asp-action="Index">Phân quyền</a></li>
                   </ul>
@@ -47,10 +48,10 @@
     {
         <li class="mr-2">@await Component.InvokeAsync("Cart")</li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Đăng ký</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Đăng nhập</a>
         </li>
     }
 </ul>

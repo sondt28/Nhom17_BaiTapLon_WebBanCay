@@ -1,0 +1,31 @@
+﻿@model Order
+
+<div class="madal fade modal" id="statusOrder">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>Cập nhật trạng thái đơn hàng</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form asp-action="UpdateStatusOrder" asp-controller="Order" method="post" data-ajax="true">
+                <input type="hidden" asp-for="Id" />
+                <div class="modal-body">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <label asp-for="Status"></label>
+                    <select asp-for="Status">
+                        @foreach (var value in Enum.GetValues(typeof(OrderStatus)))
+                        {
+                            <option value="@value">@value</option>
+                        }
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <div>
+                        <input type="submit" class="btn btn-primary" value="Tạo"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

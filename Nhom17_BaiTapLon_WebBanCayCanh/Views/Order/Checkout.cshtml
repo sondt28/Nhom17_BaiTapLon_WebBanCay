@@ -1,0 +1,124 @@
+﻿@model AddressAndOrderViewModel
+<div class="container">
+    <h5>Thanh toán</h5>
+    <hr>
+    <form method="post" asp-action="Checkout" asp-controller="Order">
+        <input type="hidden" asp-for="UserId" />
+        <input type="hidden" asp-for="TotalAmount" />
+        <input type="hidden" asp-for="OrderId" />
+        <div class="row">
+            <div class="col-md-6">
+                <h6>Địa chỉ giao hàng</h6>
+                <hr>
+                <div class="form-horizontal">
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label class="control-label" asp-for="Name"></label>
+                            <input asp-for="Name" class="form-control"/>
+                            <span asp-validation-for="Name" class="text-danger field-validation-valid"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                           <label class="control-label" asp-for="City"></label>
+                            <input asp-for="City" class="form-control"/>
+                            <span asp-validation-for="City" class="text-danger field-validation-valid"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                           <label class="control-label" asp-for="District"></label>
+                            <input asp-for="District" class="form-control"/>
+                            <span asp-validation-for="District" class="text-danger field-validation-valid"></span>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="control-label" asp-for="SubDistrict"></label>
+                            <input asp-for="SubDistrict" class="form-control"/>
+                            <span asp-validation-for="SubDistrict" class="text-danger field-validation-valid"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <label class="control-label" asp-for="AddressDetails"></label>
+                            <input asp-for="AddressDetails" class="form-control"/>
+                            <span asp-validation-for="AddressDetails" class="text-danger field-validation-valid"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <label class="control-label" asp-for="PhoneNumber"></label>
+                            <input asp-for="PhoneNumber" class="form-control"/>
+                            <span asp-validation-for="PhoneNumber" class="text-danger field-validation-valid"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <label class="control-label" asp-for="Note"></label>
+                            <div class="col-sm-6">
+                                <textarea asp-for="Note"></textarea>
+                            </div>
+                            <span asp-validation-for="PhoneNumber" class="text-danger field-validation-valid"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h6>Đơn hàng</h6>
+                <hr>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <td style="border-top: none;">Tên</td>
+                                <td style="border-top: none;">Số lượng</td>
+                                <td style="border-top: none;">Tổng</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach(var item in Model.OrderItems)
+                        {
+                            <tr>
+                                <td style="width: 60%;">
+                                   <a asp-action="ProductDetailsPage" asp-controller="Products" asp-route-productId="@item.Product.Id" 
+                                        class="text-muted text-decoration-none" 
+                                        title="@Html.DisplayFor(modelItem => item.Product.Name)"> @Html.DisplayFor(modelItem => item.Product.Name)</a>
+                                    @if (item.ProductOptionId != 0)
+                                    {
+                                        <br />
+                                        <span class="badge bg-warning">
+                                            @Html.DisplayFor(modelItem => item.ProductOption.Value)
+                                        </span>
+                                    }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Quantity)
+                                </td>
+                                <td>
+                                    <div class="">@{
+                                    decimal totalPrice;
+                                    totalPrice = item.Price * item.Quantity;
+                                }
+                                @totalPrice</div>
+                                </td>
+                            </tr>
+                        }
+                     
+                        <tr>
+                            <td></td>
+                            <td class="text-sm-right">
+                                <div>Tổng cộng:</div>
+                            </td>
+                            <td>@Model.TotalAmount</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="background-color:white">
+                                <button type="submit" id="placeOrder" class="btn btn-primary">Đặt hàng</button>
+                                <a class="btn btn-secondary" asp-action="Index" asp-controller="Order" asp-route-id="@Model.OrderId">Trở lại</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>

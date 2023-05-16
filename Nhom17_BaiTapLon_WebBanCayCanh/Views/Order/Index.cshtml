@@ -46,7 +46,7 @@
                                 @if (product.ProductOptionId != 0)
                                 {
                                     <br />
-                                    <span class="text-warning border border-warning border-3">
+                                    <span class="badge bg-warning">
                                         @Html.DisplayFor(modelItem => product.ProductOption.Value)
                                     </span>
                                 }
@@ -71,7 +71,6 @@
                                     asp-route-order="@Model.Id"
                                     class="btn btn-danger"><i class="bi bi-x-circle"></i>
                                 </a>
-                                
                             </td>
                         </tr>
                     }
@@ -83,7 +82,7 @@
                             <div></div>Total Price:
                         </td>
                         <td>@Model.TotalAmount</td>
-                        <td><a class="btn btn-primary" href="/Cart/Checkout">Thanh toán</a></td>
+                        <td><a class="btn btn-primary" asp-route-orderId="@Model.Id" asp-action="Checkout" asp-controller="Order">Thanh toán</a></td>
                     </tr>
                 </tbody>
             </table>

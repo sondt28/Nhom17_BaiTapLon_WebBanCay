@@ -19,6 +19,33 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Dao
                 cmd.ExecuteNonQuery();
             }
         }
+        public static void UpdateStatusOrder(IConfiguration configuration, Order order)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            {
+                sqlConnection.Open();
+                SqlCommand cmd = new SqlCommand("sp_updateStatusOrder", sqlConnection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("OrderId", order.Id);
+                cmd.Parameters.AddWithValue("Status", order.Status);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public static void Checkout(IConfiguration configuration, Order order)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            {
+                sqlConnection.Open();
+                SqlCommand cmd = new SqlCommand("sp_checkout", sqlConnection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("OrderId", order.Id);
+                cmd.Parameters.AddWithValue("Status", order.Status);
+                cmd.Parameters.AddWithValue("TotalAmount", order.TotalAmount);
+                cmd.Parameters.AddWithValue("Date", order.Date);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
         public static Order GetOrder(IConfiguration configuration, string userId)
         {
             DataTable dataTable = new DataTable();
@@ -33,6 +60,53 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Dao
             Order order = ConvertDataTableToOrder(dataTable);
 
             return order;
+        }
+
+        public static Order GetOrderById(IConfiguration configuration, int orderId)
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection sqlConnection = new SqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            {
+                sqlConnection.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter("sp_getOrderById", sqlConnection);
+                adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                adapter.SelectCommand.Parameters.AddWithValue("OrderId", orderId);
+                adapter.Fill(dataTable);
+            }
+            Order order = ConvertDataTableToOrder(dataTable);
+
+            return order;
+        }
+        public static List<Order> GetHistoryOrdersByUserId(IConfiguration configuration, string userId)
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection sqlConnection = new SqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            {
+                sqlConnection.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter("sp_getHistoryOrder", sqlConnection);
+                adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                adapter.SelectCommand.Parameters.AddWithValue("UserId", userId);
+                adapter.Fill(dataTable);
+            }
+
+            List<Order> orders = ConvertDataTableToOrderss(dataTable);
+
+            return orders;
+        }
+        public static List<Order> GetOrders(IConfiguration configuration)
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection sqlConnection = new SqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            {
+                sqlConnection.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter("sp_getOrders", sqlConnection);
+                adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                adapter.Fill(dataTable);
+            }
+
+            List<Order> orders = ConvertDataTableToOrderss(dataTable);
+
+            return orders;
         }
         public static Order GetOrderDetails(IConfiguration configuration, int orderId)
         {
@@ -76,7 +150,6 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Dao
                     Id = Convert.IsDBNull(dataTable.Rows[i]["ProductId"]) ? 0 : Convert.ToInt32(dataTable.Rows[i]["ProductId"]),
                     Name = Convert.IsDBNull(dataTable.Rows[i]["ProductName"]) ? null : Convert.ToString(dataTable.Rows[i]["ProductName"]),
                     Image = Convert.IsDBNull(dataTable.Rows[i]["ProductImage"]) ? null : Convert.ToString(dataTable.Rows[i]["ProductImage"]),
-                    
                 };
                 orderItem.Product = product;
 
@@ -111,6 +184,27 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Dao
                 }
             }
             return order;
+        }
+        private static List<Order> ConvertDataTableToOrderss(DataTable dataTable)
+        {
+            List<Order> orders = new List<Order>();
+            
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                Order order = new Order();
+                order.Id = Convert.IsDBNull(dataTable.Rows[i]["Id"]) ? 0 : Convert.ToInt32(dataTable.Rows[i]["Id"]);
+                order.Date = Convert.IsDBNull(dataTable.Rows[i]["Date"]) ? null : Convert.ToDateTime(dataTable.Rows[i]["Date"]);
+                order.TotalAmount = Convert.IsDBNull(dataTable.Rows[i]["TotalAmount"]) ? 0 : Convert.ToDecimal(dataTable.Rows[i]["TotalAmount"]);
+                string statusString = Convert.ToString(dataTable.Rows[i]["Status"]);
+                OrderStatus status;
+                if (Enum.TryParse(statusString, out status))
+                {
+                    order.Status = status;
+                }
+                orders.Add(order);
+            }
+
+            return orders;
         }
     }
 }

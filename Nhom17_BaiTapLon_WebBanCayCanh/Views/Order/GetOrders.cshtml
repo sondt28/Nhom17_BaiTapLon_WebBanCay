@@ -1,0 +1,16 @@
+﻿@model OrderViewModel
+
+<div class="container">
+        <h5>Đơn hàng</h5>
+        <hr>
+        <div class="card card order-history">
+            <ul class="list-group list-group-flush">
+            @foreach(var item in Model.Orders)
+            {
+                <li class="list-group-item">
+                    Order ID: # <a asp-controller="Order" asp-action="OrderDetails" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Id)</a>
+                    <small><span class="badge bg-success">@Html.DisplayFor(modelItem => item.Status)</span></small>
+                </li>
+            }
+        </div>
+</div>

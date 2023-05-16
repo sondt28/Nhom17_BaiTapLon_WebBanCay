@@ -1,5 +1,9 @@
 ﻿@model OrderViewModel
 
-<a class="dropdown-item" asp-controller="Order" asp-action="Index" asp-route-id="@Model.Id">
-    <i class="bi bi-cart3"></i> (@Model.TotalOrderItems)
+<a class="dropdown-item position-relative" asp-controller="Order" asp-action="Index" asp-route-id="@Model.Id">
+    <i class="bi bi-cart3"></i>
+  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    @Model.TotalOrderItems
+    <span class="visually-hidden">unread messages</span>
+  </span>
 </a>

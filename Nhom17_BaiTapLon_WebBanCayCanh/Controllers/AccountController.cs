@@ -84,7 +84,7 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
                     var callbackUrl = Url.Action("ConfirmAccount", "Account",
                                         new { userId = user.Id, code = code },
                                         protocol: HttpContext.Request.Scheme);
-                    var from = "son286202@gmail.com";
+                    var from = model.Email;
                     var subject = "Confirm account";
                     string text = "Confirm account by clicking here: <a href=\"" + callbackUrl + "\">link</a>";
 
@@ -107,14 +107,13 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-
             if (ModelState.IsValid)
             {
 
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("ProductPages", "Products");
                 }
                 else
                 {

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,7 @@ using Nhom17_BaiTapLon_WebBanCayCanh.Models;
 
 namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CategoriesController : Controller
     {
         private readonly IConfiguration _configuration;
@@ -21,7 +23,6 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
 
             return View(categoryViewModel);
         }
-
         public JsonResult Create()
         {
             List<Category> categories = CategoryDao.GetCategoriesWithoutProduct(_configuration);
@@ -96,6 +97,7 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
 
             return RedirectToAction("Index", "Categories");
         }
+
         public IActionResult Details(int id)
         {
             Category category = CategoryDao.GetCategory(_configuration, id);

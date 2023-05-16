@@ -13,6 +13,7 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
         {
             _configuration = configuration;
         }
+        [Authorize]
         public IActionResult Index()
         {
             return View();
@@ -42,6 +43,7 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
 
             return View();
         }
+        [Authorize]
         [HttpPost]
         public IActionResult Create(AddressViewModel address)
         {

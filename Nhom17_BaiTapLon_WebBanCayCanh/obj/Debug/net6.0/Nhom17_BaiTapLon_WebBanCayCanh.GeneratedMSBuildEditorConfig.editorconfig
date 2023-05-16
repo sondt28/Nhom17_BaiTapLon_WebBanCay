@@ -68,8 +68,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/Order/Checkout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcQ2hlY2tvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/Order/CheckoutConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcQ2hlY2tvdXRDb25maXJtYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/Order/GetOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcR2V0T3JkZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/Order/HistoryOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcSGlzdG9yeU9yZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/Order/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/Order/OrderDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcT3JkZXJEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/Order/_UpdateStatusOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcX1VwZGF0ZVN0YXR1c09yZGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/ProductOptions/Index.cshtml]
