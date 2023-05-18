@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Nhom17_BaiTapLon_WebBanCayCanh.Dao;
 using Nhom17_BaiTapLon_WebBanCayCanh.Models;
@@ -16,6 +17,7 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
             _userManager = userManager;
             _roleManager = roleManager;
         }
+        [Authorize]
         public IActionResult UserInfo()
         {
             return View();
@@ -56,18 +58,5 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
             }
             return new JsonResult(model);
         }
-        [HttpGet]
-        public async Task<IActionResult> ManagerUserClaims(string userId)
-        {
-            IdentityUser user = await _userManager.FindByIdAsync(userId);
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return null;
-        }
-
     }
 }

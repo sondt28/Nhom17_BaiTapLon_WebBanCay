@@ -7,6 +7,7 @@ using System.Security.Claims;
 
 namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         private readonly IConfiguration _configuration;
@@ -25,7 +26,6 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
             };
             return View(model);
         }
-        [Authorize]
         public IActionResult Checkout(int orderId)
         {
             Order order = OrderDao.GetOrderDetails(_configuration, orderId);
@@ -52,7 +52,6 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
 
             return View(addressAndOrderViewModel);
         }
-        [Authorize]
         [HttpPost]
         public IActionResult Checkout(AddressAndOrderViewModel addressAndOrderViewModel)
         {

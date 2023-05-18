@@ -16,6 +16,7 @@
     <ActiveDebugProfile>Nhom17_BaiTapLon_WebBanCayCanh</ActiveDebugProfile>
     <_SelectedScaffolderID>MvcControllerWithContextScaffolder</_SelectedScaffolderID>
     <_SelectedScaffolderCategoryPath>root/Common</_SelectedScaffolderCategoryPath>
+    <NameOfLastUsedPublishProfile>C:\Users\son\Documents\c#_project\Nhom17_BaiTapLon_WebBanCayCanh\Nhom17_BaiTapLon_WebBanCayCanh\Properties\PublishProfiles\FolderProfile.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>

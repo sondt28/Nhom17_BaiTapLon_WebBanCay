@@ -1,4 +1,5 @@
 ﻿using MailKit.Search;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Nhom17_BaiTapLon_WebBanCayCanh.Dao;
@@ -34,6 +35,7 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
 
             return View(items);
         }
+        [Authorize]
         public IActionResult ProductDetailsPage(int productId, int? productOptionId)
         {
 

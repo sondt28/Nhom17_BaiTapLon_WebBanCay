@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\son\Documents\c#_project\Nhom17_BaiTapLon_WebBanCayCanh\Nhom17_BaiTapLon_WebBanCayCanh
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/Account/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/son/Documents/c\#_project/Nhom17_BaiTapLon_WebBanCayCanh/Nhom17_BaiTapLon_WebBanCayCanh/Views/Account/ConfirmAccount.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDb25maXJtQWNjb3VudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

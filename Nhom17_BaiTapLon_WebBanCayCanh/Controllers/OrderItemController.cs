@@ -7,6 +7,7 @@ using System.Security.Claims;
 
 namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
 {
+    [Authorize]
     public class OrderItemController : Controller
     {
         private readonly IConfiguration _configuration;
@@ -18,7 +19,7 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
         {
             return View();
         }
-        [Authorize]
+        
         [HttpPost]
         public IActionResult Create(OrderItemViewModel model)
         {

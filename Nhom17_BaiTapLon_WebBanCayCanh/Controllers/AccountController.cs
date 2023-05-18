@@ -18,13 +18,15 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
             _signInManager = signInManager;
             _configuration = configuration;
         }
-        public IActionResult Register()
+        public IActionResult Register(string returnurl = null)
         {
+            ViewData["ReturnUrl"] = returnurl;
             RegisterViewModel model = new RegisterViewModel();
             return View(model);
         }
-        public IActionResult Login()
+        public IActionResult Login(string returnurl = null)
         {
+            ViewData["ReturnUrl"] = returnurl;
             return View();
         }
         public IActionResult ForgotPassword()
@@ -71,10 +73,12 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task<IActionResult> Register(RegisterViewModel model, string returnurl = null)
         {
             if (ModelState.IsValid)
             {
+                ViewData["ReturnUrl"] = returnurl;
+                returnurl = returnurl ?? Url.Content("~/");
                 var user = new User { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
 
@@ -105,15 +109,17 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model, string returnurl = null)
         {
             if (ModelState.IsValid)
             {
+                ViewData["ReturnUrl"] = returnurl;
+                returnurl = returnurl ?? Url.Content("~/");
 
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("ProductPages", "Products");
+                    return LocalRedirect(returnurl);
                 }
                 else
                 {
@@ -173,7 +179,10 @@ namespace Nhom17_BaiTapLon_WebBanCayCanh.Controllers
             }
             return View(model);
         }
-
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
         private void AddErrors(IdentityResult result)
         {
             foreach(var error in result.Errors)
